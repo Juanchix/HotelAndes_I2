@@ -34,7 +34,7 @@ public interface ServispaRepo extends JpaRepository <Servispa, Integer> {
     @Modifying
     @Transactional
     @Query(value = "UPDATE servispas SET duracion=:duracion, costo=:costo, fecha=:fecha, spa=:spa WHERE idservispas=:idservispas", nativeQuery = true)
-    void actualizarServispas(@Param("idservispas") Integer idservispas, @Param("duracion") Integer duracion, @Param("costo") Integer costo, @Param("fecha") Date fecha, 
+    void actualizarServispa(@Param("idservispas") Integer idservispas, @Param("duracion") Integer duracion, @Param("costo") Integer costo, @Param("fecha") Date fecha, 
                             @Param("spa") Spa spa);
 
 
@@ -42,5 +42,5 @@ public interface ServispaRepo extends JpaRepository <Servispa, Integer> {
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM servispas WHERE idservispas =: idservispas", nativeQuery = true)
-    void eliminarServispas(@Param("idservispas") Integer idservispas);
+    void eliminarServispa(@Param("idservispas") Integer idservispas);
 }

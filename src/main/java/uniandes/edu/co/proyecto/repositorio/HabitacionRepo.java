@@ -8,7 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import uniandes.edu.co.proyecto.modelo.Alojamiento;
 import uniandes.edu.co.proyecto.modelo.Habitacion;
+import uniandes.edu.co.proyecto.modelo.Hotel;
+import uniandes.edu.co.proyecto.modelo.Tipo;
 
 
 public interface HabitacionRepo extends JpaRepository <Habitacion, Integer> {
@@ -16,8 +19,10 @@ public interface HabitacionRepo extends JpaRepository <Habitacion, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO habitaciones (idhabitacion, numhabitacion, disponible, precionoche) VALUES (parranderos_sequence.nextval, :numhabitacion, :disponible, :precionoche)", nativeQuery = true)
-    void insertarHabitacion(@Param("numhabitacion") Integer numhabitacion, @Param("disponible") String disponible, @Param("precionoche") Integer precionoche);
+    @Query(value = "INSERT INTO habitaciones (idhabitacion, numhabitacion, disponible, precionoche, hotel, tipo, alojamiento) VALUES (parranderos_sequence.nextval, :numhabitacion, :disponible, :precionoche, :hotel, :tipo, :alojamiento)", nativeQuery = true)
+    void insertarHabitacion(@Param("numhabitacion") Integer numhabitacion, @Param("disponible") String disponible,
+                            @Param("precionoche") Integer precionoche, @Param("hotel") Hotel hotel, 
+                            @Param("tipo") Tipo tipo, @Param("alojamiento") Alojamiento alojamiento);
 
 
     // Read
@@ -31,8 +36,10 @@ public interface HabitacionRepo extends JpaRepository <Habitacion, Integer> {
     // Update
     @Modifying
     @Transactional
-    @Query(value = "UPDATE habitacones SET numhabitacion=:numhabitacion, disponible=:disponible, precionoche=:precionoche WHERE idhabitacion=:idhabitacion", nativeQuery = true)
-    void actualizarHabitacion(@Param("idhabitacion") int idhabitacion, @Param("numhabitacion") Integer numhabitacion, @Param("disponible") String disponible, @Param("precionoche") Integer precionoche);
+    @Query(value = "UPDATE habitacones SET numhabitacion=:numhabitacion, disponible=:disponible, precionoche=:precionoche, hotel=:hotel, tipo=:tipo, alojamiento=:alojamiento WHERE idhabitacion=:idhabitacion", nativeQuery = true)
+    void actualizarHabitacion(@Param("idhabitacion") int idhabitacion, @Param("numhabitacion") Integer numhabitacion, @Param("disponible") String disponible,
+                            @Param("precionoche") Integer precionoche, @Param("hotel") Hotel hotel, 
+                            @Param("tipo") Tipo tipo, @Param("alojamiento") Alojamiento alojamiento);
 
 
     // Delete

@@ -3,7 +3,6 @@ package uniandes.edu.co.proyecto.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +12,7 @@ import uniandes.edu.co.proyecto.modelo.Alojamiento;
 import uniandes.edu.co.proyecto.repositorio.AlojamientoRepo;
 
 @Controller
-public class AlojamientosControl {
+public class AlojamientosController {
     
     @Autowired
     private AlojamientoRepo alojamientoRepo;
@@ -57,5 +56,5 @@ public class AlojamientosControl {
     public String alojamientoEliminar(@PathVariable("id") int id){
         alojamientoRepo.eliminarAlojamiento(id);
         return "redirect:/alojamientos";
-    }
+}
 }
