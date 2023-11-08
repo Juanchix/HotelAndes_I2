@@ -131,7 +131,6 @@ ALTER TABLE reuniones ADD CONSTRAINT reuniones_pk PRIMARY KEY ( idservicio );
 CREATE TABLE servicios (
     horarioinicial     DATE,
     horariofinal       DATE,
-    nombre             VARCHAR2(64) NOT NULL,
     costo              NUMBER NOT NULL,
     cargado            VARCHAR2(2) NOT NULL,
     existe             VARCHAR2(2) NOT NULL,

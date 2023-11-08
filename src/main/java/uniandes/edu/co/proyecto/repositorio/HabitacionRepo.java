@@ -1,6 +1,8 @@
 package uniandes.edu.co.proyecto.repositorio;
 
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -47,5 +49,21 @@ public interface HabitacionRepo extends JpaRepository <Habitacion, Integer> {
     @Transactional
     @Query(value = "DELETE FROM habitaciones WHERE idhabitacion =: idhabitacion", nativeQuery = true)
     void eliminarHabitacion(@Param("idhabitacion") int idhabitacion);
+
+      // REQ1
+      @Query(value = "SELECT h.numhabitacion, SUM(s.costo) AS totalRecolectado " +
+      "FROM habitaciones h " +
+      "JOIN alojamientos a ON h.alojamiento = a.idalojamiento " +
+      "JOIN cuentas c ON a.idalojamiento = c.alojamiento " +
+      "JOIN reservas r ON c.idcuenta = r.cuenta " +
+      "JOIN servicios s ON r.idreserva = s.reserva " +
+      "WHERE s.horarioinicial >= :startDate " +
+      "AND s.horariofinal <= :endDate " +
+      "AND s.existe = 'SI' " +
+      "GROUP BY h.numhabitacion", nativeQuery = true)
+List<Object[]> calcularDineroRecolectadoPorHabitacionEnElUltimoAnio(
+@Param("startDate") Date startDate,
+@Param("endDate") Date endDate
+);
 
 }
