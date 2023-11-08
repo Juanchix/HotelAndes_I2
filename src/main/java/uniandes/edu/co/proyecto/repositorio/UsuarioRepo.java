@@ -16,9 +16,9 @@ public interface UsuarioRepo extends JpaRepository <Usuario, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO usuarios (iduser, nombreuser, tipodocuser, numdocuser, correouser, alojamiento) VALUES (parranderos_sequence.nextval, :nombreuser, :tipodocuser, :numdocuser, :correouser, :alojamiento)", nativeQuery = true)
+    @Query(value = "INSERT INTO usuarios (iduser, nombreuser, tipodocuser, numdocuser, correouser) VALUES (parranderos_sequence.nextval, :nombreuser, :tipodocuser, :numdocuser, :correouser)", nativeQuery = true)
     void insertarUsuario(@Param("nombreuser") String nombreuser, @Param("tipodocuser") String tipodocuser, @Param("numdocuser") Integer numdocuser, 
-                            @Param("correouser") String correouser, @Param("alojamiento") Alojamiento alojamiento);
+                            @Param("correouser") String correouser);
 
 
     // Read
@@ -32,9 +32,9 @@ public interface UsuarioRepo extends JpaRepository <Usuario, Integer> {
     // Update
     @Modifying
     @Transactional
-    @Query(value = "UPDATE usuarios SET nombreuser=:nombreuser, tipodocuser=:tipodocuser, numdocuser=:numdocuser, correouser=:correouser, alojamiento=:alojamiento WHERE iduser=:iduser", nativeQuery = true)
+    @Query(value = "UPDATE usuarios SET nombreuser=:nombreuser, tipodocuser=:tipodocuser, numdocuser=:numdocuser, correouser=:correouser WHERE iduser=:iduser", nativeQuery = true)
     void actualizarUsuario(@Param("iduser") Integer iduser, @Param("nombreuser") String nombreuser, @Param("tipodocuser") String tipodocuser, @Param("numdocuser") Integer numdocuser, 
-                            @Param("correouser") String correouser, @Param("alojamiento") Alojamiento alojamiento);
+                            @Param("correouser") String correouser);
 
 
     // Delete

@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import uniandes.edu.co.proyecto.modelo.Reserva;
 import uniandes.edu.co.proyecto.modelo.Servicio;
 
 public interface ServicioRepo extends JpaRepository <Servicio, Integer> {
@@ -16,9 +17,9 @@ public interface ServicioRepo extends JpaRepository <Servicio, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO servicios (idservicio, horarioinicio, horariofin, nombre, costo, cargado, existe) VALUES (parranderos_sequence.nextval, :horarioinicio, :horariofin, :nombre, :costo, :cargado, :existe)", nativeQuery = true)
+    @Query(value = "INSERT INTO servicios (idservicio, horarioinicio, horariofin, nombre, costo, cargado, existe, reserva) VALUES (parranderos_sequence.nextval, :horarioinicio, :horariofin, :nombre, :costo, :cargado, :existe, :reserva)", nativeQuery = true)
     void insertarServicio(@Param("horarioinicio") Time horarioinicio, @Param("horariofin") Time horariofin, @Param("nombre") String nombre, 
-                            @Param("costo") Integer costo, @Param("cargado") String cargado, @Param("existe") String existe);
+                            @Param("costo") Integer costo, @Param("cargado") String cargado, @Param("existe") String existe, @Param("reserva") Reserva reserva);
 
 
     // Read
@@ -32,9 +33,9 @@ public interface ServicioRepo extends JpaRepository <Servicio, Integer> {
     // Update
     @Modifying
     @Transactional
-    @Query(value = "UPDATE servicios SET horarioinicio=:horarioinicio, horariofin=:horariofin, nombre=:nombre, costo=:costo, cargado=:cargado, existe=:existe WHERE idservicio=:idservicio", nativeQuery = true)
+    @Query(value = "UPDATE servicios SET horarioinicio=:horarioinicio, horariofin=:horariofin, nombre=:nombre, costo=:costo, cargado=:cargado, existe=:existe, reserva=:reserva WHERE idservicio=:idservicio", nativeQuery = true)
     void actualizarServicio(@Param("idservicio") Integer idservicio, @Param("horarioinicio") Time horarioinicio, @Param("horariofin") Time horariofin, @Param("nombre") String nombre, 
-                            @Param("costo") Integer costo, @Param("cargado") String cargado, @Param("existe") String existe);
+                            @Param("costo") Integer costo, @Param("cargado") String cargado, @Param("existe") String existe, @Param("reserva") Reserva reserva);
 
 
     // Delete
