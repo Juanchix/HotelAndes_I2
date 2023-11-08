@@ -31,7 +31,7 @@ public class AlojamientosController {
 
     @PostMapping("/alojamientos/new/save")
     public String alojamientoGuardar(@ModelAttribute Alojamiento alojamiento){
-        alojamientoRepo.insertarAlojamiento(alojamiento.getActiva(), alojamiento.getCheckin(), alojamiento.getCheckout(), alojamiento.getAcompanantes(), alojamiento.getUsuario(), alojamiento.getPlan(), alojamiento.getCuenta(), alojamiento.getHabitacion());
+        alojamientoRepo.insertarAlojamiento(alojamiento.getActiva(), alojamiento.getCheckin(), alojamiento.getCheckout(), alojamiento.getAcompanantes(), alojamiento.getPlan());
         return "redirect:/alojamientos";
     }
 
@@ -48,7 +48,7 @@ public class AlojamientosController {
 
     @PostMapping("/alojamientos/{id}/edit/save")
     public String alojamientoEditarGuardar(@PathVariable("id") int id, @ModelAttribute Alojamiento alojamiento){
-        alojamientoRepo.actualizarAlojamiento(id, alojamiento.getActiva(), alojamiento.getCheckin(), alojamiento.getCheckout(), alojamiento.getAcompanantes(), alojamiento.getUsuario(), alojamiento.getPlan(), alojamiento.getCuenta(), alojamiento.getHabitacion());
+        alojamientoRepo.actualizarAlojamiento(id, alojamiento.getActiva(), alojamiento.getCheckin(), alojamiento.getCheckout(), alojamiento.getAcompanantes(), alojamiento.getPlan());
         return "redirect:/alojamientos";
     }
 
