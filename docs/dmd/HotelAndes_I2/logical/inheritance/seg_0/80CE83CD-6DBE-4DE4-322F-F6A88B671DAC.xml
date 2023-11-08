@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<InheritanceRelation class="oracle.dbtools.crest.model.design.logical.InheritanceRelation" name="Hierarchy_15" directorySegmentName="seg_0" id="80CE83CD-6DBE-4DE4-322F-F6A88B671DAC">
+<createdBy>orteg</createdBy>
+<createdTime>2023-11-08 17:59:31 UTC</createdTime>
+<ownerDesignName>HotelAndes_I2</ownerDesignName>
+<engineerTo>
+<item key="7BA93118-9A88-7FB0-56FD-318C1BA15AF9" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<nameOnSource>Super Type</nameOnSource>
+<nameOnTarget>Sub Type</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceEntity>D512466C-4E72-889F-D66E-E3B879BA7692</sourceEntity>
+<targetEntity>768C5FAD-99B5-3C5F-D11C-996F3B949C04</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</InheritanceRelation>
