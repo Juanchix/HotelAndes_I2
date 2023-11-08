@@ -1,4 +1,3 @@
-
 CREATE TABLE alojamientos (
     activa        VARCHAR2(2) NOT NULL,
     checkin       DATE NOT NULL,
@@ -71,6 +70,18 @@ CREATE TABLE hoteles (
 );
 
 ALTER TABLE hoteles ADD CONSTRAINT hoteles_pk PRIMARY KEY ( idhotel );
+
+CREATE TABLE lavados (
+    prendas    NUMBER NOT NULL,
+    tipo       VARCHAR2(32) NOT NULL,
+    zapatos    NUMBER NOT NULL,
+    idservicio NUMBER NOT NULL
+);
+
+ALTER TABLE lavados
+    ADD CHECK ( prendas IN ( no, si ) );
+
+ALTER TABLE lavados ADD CONSTRAINT lavados_pk PRIMARY KEY ( idservicio );
 
 CREATE TABLE piscinas (
     capacidad   NUMBER NOT NULL,
@@ -252,6 +263,10 @@ ALTER TABLE habitaciones
     ADD CONSTRAINT habitaciones_tipos_fk FOREIGN KEY ( idtipo )
         REFERENCES tipos ( idtipo )
             ON DELETE CASCADE;
+
+ALTER TABLE lavados
+    ADD CONSTRAINT lavados_servicios_fk FOREIGN KEY ( idservicio )
+        REFERENCES servicios ( idservicio );
 
 ALTER TABLE piscinas
     ADD CONSTRAINT piscinas_servicios_fk FOREIGN KEY ( idservicio )
