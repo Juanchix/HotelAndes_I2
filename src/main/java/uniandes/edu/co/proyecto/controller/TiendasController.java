@@ -26,7 +26,7 @@ public class TiendasController {
     @GetMapping("/tiendas/new")
     public String tiendaForm(Model model){
         model.addAttribute("tienda", new Tienda());
-        return "tiendaNuevo";
+        return "tiendasNuevo";
     }
 
     @PostMapping("/tiendas/new/save")
@@ -42,7 +42,7 @@ public class TiendasController {
             model.addAttribute("tienda", tienda);
             return "tiendasEditar";
         } else {
-            return "redirect:/tienda";
+            return "redirect:/tiendas";
         }
     }
 

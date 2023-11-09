@@ -26,7 +26,7 @@ public class ReunionesController {
     @GetMapping("/reuniones/new")
     public String reunionForm(Model model){
         model.addAttribute("reunion", new Reunion());
-        return "reunionNuevo";
+        return "reunionesNuevo";
     }
 
     @PostMapping("/reuniones/new/save")
@@ -42,7 +42,7 @@ public class ReunionesController {
             model.addAttribute("reunion", reunion);
             return "reunionesEditar";
         } else {
-            return "redirect:/reunion";
+            return "redirect:/reuniones";
         }
     }
 

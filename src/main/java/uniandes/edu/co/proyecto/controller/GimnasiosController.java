@@ -26,7 +26,7 @@ public class GimnasiosController {
     @GetMapping("/gimnasios/new")
     public String gimnasioForm(Model model){
         model.addAttribute("gimnasio", new Gimnasio());
-        return "gimnasioNuevo";
+        return "gimnasiosNuevo";
     }
 
     @PostMapping("/gimnasios/new/save")
@@ -42,7 +42,7 @@ public class GimnasiosController {
             model.addAttribute("gimnasio", gimnasio);
             return "gimnasiosEditar";
         } else {
-            return "redirect:/gimnasio";
+            return "redirect:/gimnasios";
         }
     }
 

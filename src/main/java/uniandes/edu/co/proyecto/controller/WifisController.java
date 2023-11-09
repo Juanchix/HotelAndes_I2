@@ -26,7 +26,7 @@ public class WifisController {
     @GetMapping("/wifis/new")
     public String wifiForm(Model model){
         model.addAttribute("wifi", new Wifi());
-        return "wifiNuevo";
+        return "wifisNuevo";
     }
 
     @PostMapping("/wifis/new/save")
@@ -42,7 +42,7 @@ public class WifisController {
             model.addAttribute("wifi", wifi);
             return "wifisEditar";
         } else {
-            return "redirect:/wifi";
+            return "redirect:/wifis";
         }
     }
 

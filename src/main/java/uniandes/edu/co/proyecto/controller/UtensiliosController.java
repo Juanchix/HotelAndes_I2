@@ -26,7 +26,7 @@ public class UtensiliosController {
     @GetMapping("/utensilios/new")
     public String utensilioForm(Model model){
         model.addAttribute("utensilio", new Utensilio());
-        return "utensilioNuevo";
+        return "utensiliosNuevo";
     }
 
     @PostMapping("/utensilios/new/save")
@@ -42,7 +42,7 @@ public class UtensiliosController {
             model.addAttribute("utensilio", utensilio);
             return "utensiliosEditar";
         } else {
-            return "redirect:/utensilio";
+            return "redirect:/utensilios";
         }
     }
 

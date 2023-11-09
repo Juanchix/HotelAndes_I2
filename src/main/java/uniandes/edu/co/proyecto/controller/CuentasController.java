@@ -26,7 +26,7 @@ public class CuentasController {
     @GetMapping("/cuentas/new")
     public String cuentaForm(Model model){
         model.addAttribute("cuenta", new Cuenta());
-        return "cuentaNuevo";
+        return "cuentasNuevo";
     }
 
     @PostMapping("/cuentas/new/save")
@@ -42,7 +42,7 @@ public class CuentasController {
             model.addAttribute("cuenta", cuenta);
             return "cuentasEditar";
         } else {
-            return "redirect:/cuenta";
+            return "redirect:/cuentas";
         }
     }
 

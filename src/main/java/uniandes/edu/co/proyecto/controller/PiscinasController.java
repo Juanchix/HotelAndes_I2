@@ -26,7 +26,7 @@ public class PiscinasController {
     @GetMapping("/piscinas/new")
     public String piscinaForm(Model model){
         model.addAttribute("piscina", new Piscina());
-        return "piscinaNuevo";
+        return "piscinasNuevo";
     }
 
     @PostMapping("/piscinas/new/save")
@@ -42,7 +42,7 @@ public class PiscinasController {
             model.addAttribute("piscina", piscina);
             return "piscinasEditar";
         } else {
-            return "redirect:/piscina";
+            return "redirect:/piscinas";
         }
     }
 

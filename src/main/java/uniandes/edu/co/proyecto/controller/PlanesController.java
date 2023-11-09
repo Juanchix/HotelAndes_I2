@@ -26,7 +26,7 @@ public class PlanesController {
     @GetMapping("/planes/new")
     public String planForm(Model model){
         model.addAttribute("plan", new Plan());
-        return "planNuevo";
+        return "planesNuevo";
     }
 
     @PostMapping("/planes/new/save")
@@ -42,7 +42,7 @@ public class PlanesController {
             model.addAttribute("plan", plan);
             return "planesEditar";
         } else {
-            return "redirect:/plan";
+            return "redirect:/planes";
         }
     }
 

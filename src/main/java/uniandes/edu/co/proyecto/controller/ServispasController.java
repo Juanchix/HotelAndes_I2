@@ -26,7 +26,7 @@ public class ServispasController {
     @GetMapping("/servispas/new")
     public String servispaForm(Model model){
         model.addAttribute("servispa", new Servispa());
-        return "servispaNuevo";
+        return "servispasNuevo";
     }
 
     @PostMapping("/servispas/new/save")
@@ -42,7 +42,7 @@ public class ServispasController {
             model.addAttribute("servispa", servispa);
             return "servispasEditar";
         } else {
-            return "redirect:/servispa";
+            return "redirect:/servispas";
         }
     }
 

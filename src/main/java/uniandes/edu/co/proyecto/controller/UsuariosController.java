@@ -26,7 +26,7 @@ public class UsuariosController {
     @GetMapping("/usuarios/new")
     public String usuarioForm(Model model){
         model.addAttribute("usuario", new Usuario());
-        return "usuarioNuevo";
+        return "usuariosNuevo";
     }
 
     @PostMapping("/usuarios/new/save")
@@ -42,7 +42,7 @@ public class UsuariosController {
             model.addAttribute("usuario", usuario);
             return "usuariosEditar";
         } else {
-            return "redirect:/usuario";
+            return "redirect:/usuarios";
         }
     }
 

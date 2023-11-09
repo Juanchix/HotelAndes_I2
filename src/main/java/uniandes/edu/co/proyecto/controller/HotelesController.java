@@ -26,7 +26,7 @@ public class HotelesController {
     @GetMapping("/hoteles/new")
     public String hotelForm(Model model){
         model.addAttribute("hotel", new Hotel());
-        return "hotelNuevo";
+        return "hotelesNuevo";
     }
 
     @PostMapping("/hoteles/new/save")
@@ -42,7 +42,7 @@ public class HotelesController {
             model.addAttribute("hotel", hotel);
             return "hotelesEditar";
         } else {
-            return "redirect:/hotel";
+            return "redirect:/hoteles";
         }
     }
 

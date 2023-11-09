@@ -26,7 +26,7 @@ public class ServiciosController {
     @GetMapping("/servicios/new")
     public String servicioForm(Model model){
         model.addAttribute("servicio", new Servicio());
-        return "servicioNuevo";
+        return "serviciosNuevo";
     }
 
     @PostMapping("/servicios/new/save")
@@ -42,7 +42,7 @@ public class ServiciosController {
             model.addAttribute("servicio", servicio);
             return "serviciosEditar";
         } else {
-            return "redirect:/servicio";
+            return "redirect:/servicios";
         }
     }
 

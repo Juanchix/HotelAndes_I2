@@ -26,7 +26,7 @@ public class SpasController {
     @GetMapping("/spas/new")
     public String spaForm(Model model){
         model.addAttribute("spa", new Spa());
-        return "spaNuevo";
+        return "spasNuevo";
     }
 
     @PostMapping("/spas/new/save")
@@ -42,7 +42,7 @@ public class SpasController {
             model.addAttribute("spa", spa);
             return "spasEditar";
         } else {
-            return "redirect:/spa";
+            return "redirect:/spas";
         }
     }
 

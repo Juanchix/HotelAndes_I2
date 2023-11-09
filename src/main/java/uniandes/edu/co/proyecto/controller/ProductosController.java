@@ -26,7 +26,7 @@ public class ProductosController {
     @GetMapping("/productos/new")
     public String productoForm(Model model){
         model.addAttribute("producto", new Producto());
-        return "productoNuevo";
+        return "productosNuevo";
     }
 
     @PostMapping("/productos/new/save")
@@ -42,7 +42,7 @@ public class ProductosController {
             model.addAttribute("producto", producto);
             return "productosEditar";
         } else {
-            return "redirect:/producto";
+            return "redirect:/productos";
         }
     }
 

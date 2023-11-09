@@ -26,7 +26,7 @@ public class RestaurantesController {
     @GetMapping("/restaurantes/new")
     public String restauranteForm(Model model){
         model.addAttribute("restaurante", new Restaurante());
-        return "restauranteNuevo";
+        return "restaurantesNuevo";
     }
 
     @PostMapping("/restaurantes/new/save")
@@ -42,7 +42,7 @@ public class RestaurantesController {
             model.addAttribute("restaurante", restaurante);
             return "restaurantesEditar";
         } else {
-            return "redirect:/restaurante";
+            return "redirect:/restaurantes";
         }
     }
 

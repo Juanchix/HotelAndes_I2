@@ -26,7 +26,7 @@ public class ConferenciasController {
     @GetMapping("/conferencias/new")
     public String conferenciaForm(Model model){
         model.addAttribute("conferencia", new Conferencia());
-        return "conferenciaNuevo";
+        return "conferenciasNuevo";
     }
 
     @PostMapping("/conferencias/new/save")
@@ -42,7 +42,7 @@ public class ConferenciasController {
             model.addAttribute("conferencia", conferencia);
             return "conferenciasEditar";
         } else {
-            return "redirect:/conferencia";
+            return "redirect:/conferencias";
         }
     }
 

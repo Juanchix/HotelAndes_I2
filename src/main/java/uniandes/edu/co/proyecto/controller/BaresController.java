@@ -26,7 +26,7 @@ public class BaresController {
     @GetMapping("/bares/new")
     public String barForm(Model model){
         model.addAttribute("bar", new Bar());
-        return "barNuevo";
+        return "baresNuevo";
     }
 
     @PostMapping("/bares/new/save")
@@ -42,7 +42,7 @@ public class BaresController {
             model.addAttribute("bar", bar);
             return "baresEditar";
         } else {
-            return "redirect:/bar";
+            return "redirect:/bares";
         }
     }
 
