@@ -39,7 +39,7 @@ public interface CuentaRepo extends JpaRepository <Cuenta, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM cuentas WHERE idcuenta =: idcuenta", nativeQuery = true)
+    @Query(value = "DELETE FROM cuentas WHERE idcuenta = :idcuenta", nativeQuery = true)
     void eliminarCuenta(@Param("idcuenta") int idcuenta);
 
 }

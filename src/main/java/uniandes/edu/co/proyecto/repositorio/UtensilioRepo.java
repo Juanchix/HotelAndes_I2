@@ -38,6 +38,6 @@ public interface UtensilioRepo extends JpaRepository <Utensilio, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM utensilios WHERE idutensilio =: idutensilio", nativeQuery = true)
+    @Query(value = "DELETE FROM utensilios WHERE idutensilio = :idutensilio", nativeQuery = true)
     void eliminarUtensilio(@Param("idutensilio") int idutensilio);
 }

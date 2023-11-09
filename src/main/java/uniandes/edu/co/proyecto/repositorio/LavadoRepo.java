@@ -38,7 +38,7 @@ public interface LavadoRepo extends JpaRepository <Lavado, Integer>{
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM lavados WHERE idlavado =: idlavado", nativeQuery = true)
+    @Query(value = "DELETE FROM lavados WHERE idlavado = :idlavado", nativeQuery = true)
     void eliminarLavado(@Param("idlavado") int idlavado);
 
 }

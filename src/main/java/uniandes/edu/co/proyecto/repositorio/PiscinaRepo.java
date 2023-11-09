@@ -38,6 +38,6 @@ public interface PiscinaRepo extends JpaRepository <Piscina, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM piscinas WHERE idpiscina =: idpiscina", nativeQuery = true)
+    @Query(value = "DELETE FROM piscinas WHERE idpiscina = :idpiscina", nativeQuery = true)
     void eliminarPiscina(@Param("idpiscina") int idpiscina);
 }

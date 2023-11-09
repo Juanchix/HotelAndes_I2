@@ -41,6 +41,6 @@ public interface ProductoRepo extends JpaRepository <Producto, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM productos WHERE idproducto =: idproducto", nativeQuery = true)
+    @Query(value = "DELETE FROM productos WHERE idproducto = :idproducto", nativeQuery = true)
     void eliminarProducto(@Param("idproducto") int idproducto);
 }

@@ -43,7 +43,7 @@ public interface HabitacionRepo extends JpaRepository <Habitacion, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM habitaciones WHERE idhabitacion =: idhabitacion", nativeQuery = true)
+    @Query(value = "DELETE FROM habitaciones WHERE idhabitacion = :idhabitacion", nativeQuery = true)
     void eliminarHabitacion(@Param("idhabitacion") int idhabitacion);
 
       // REQ1

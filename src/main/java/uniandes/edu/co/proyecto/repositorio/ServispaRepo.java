@@ -40,6 +40,6 @@ public interface ServispaRepo extends JpaRepository <Servispa, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM servispas WHERE idservispas =: idservispas", nativeQuery = true)
+    @Query(value = "DELETE FROM servispas WHERE idservispas = :idservispas", nativeQuery = true)
     void eliminarServispa(@Param("idservispas") int idservispas);
 }

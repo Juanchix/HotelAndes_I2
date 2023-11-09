@@ -40,6 +40,6 @@ public interface UsuarioRepo extends JpaRepository <Usuario, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM usuarios WHERE iduser =: iduser", nativeQuery = true)
+    @Query(value = "DELETE FROM usuarios WHERE iduser = :iduser", nativeQuery = true)
     void eliminarUsuario(@Param("iduser") int iduser);
 }

@@ -39,6 +39,6 @@ public interface GimnasioRepo extends JpaRepository <Gimnasio, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM gimnasios WHERE idgimnasio =: idgimnasio", nativeQuery = true)
+    @Query(value = "DELETE FROM gimnasios WHERE idgimnasio = :idgimnasio", nativeQuery = true)
     void eliminarGimnasio(@Param("idgimnasio") int idgimnasio);
 }

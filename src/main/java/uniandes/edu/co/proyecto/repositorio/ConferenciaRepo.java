@@ -43,6 +43,6 @@ public interface ConferenciaRepo extends JpaRepository <Conferencia, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM conferencias WHERE idconferencia =: idconferencia", nativeQuery = true)
+    @Query(value = "DELETE FROM conferencias WHERE idconferencia = :idconferencia", nativeQuery = true)
     void eliminarConferencia(@Param("idconferencia") int idconferencia);
 }

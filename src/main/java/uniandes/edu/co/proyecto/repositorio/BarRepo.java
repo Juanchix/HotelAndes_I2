@@ -38,6 +38,6 @@ public interface BarRepo extends JpaRepository <Bar, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM bares WHERE idbar =: idbar", nativeQuery = true)
+    @Query(value = "DELETE FROM bares WHERE idbar = :idbar", nativeQuery = true)
     void eliminarBar(@Param("idbar") int idbar);
 }

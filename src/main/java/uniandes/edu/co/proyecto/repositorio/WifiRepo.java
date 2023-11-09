@@ -38,6 +38,6 @@ public interface WifiRepo extends JpaRepository <Wifi, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM wifis WHERE idwifi =: idwifi", nativeQuery = true)
+    @Query(value = "DELETE FROM wifis WHERE idwifi = :idwifi", nativeQuery = true)
     void eliminarWifi(@Param("idwifi") int idwifi);
 }

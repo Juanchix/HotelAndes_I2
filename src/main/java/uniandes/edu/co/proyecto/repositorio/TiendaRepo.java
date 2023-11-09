@@ -38,6 +38,6 @@ public interface TiendaRepo extends JpaRepository <Tienda, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM tiendas WHERE idtienda =: idtienda", nativeQuery = true)
+    @Query(value = "DELETE FROM tiendas WHERE idtienda = :idtienda", nativeQuery = true)
     void eliminarTienda(@Param("idtienda") int idtienda);
 }

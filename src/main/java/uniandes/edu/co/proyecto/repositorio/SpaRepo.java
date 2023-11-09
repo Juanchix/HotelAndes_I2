@@ -38,6 +38,6 @@ public interface SpaRepo extends JpaRepository <Spa, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM spas WHERE idspa =: idspa", nativeQuery = true)
+    @Query(value = "DELETE FROM spas WHERE idspa = :idspa", nativeQuery = true)
     void eliminarSpa(@Param("idspa") int idspa);
 }
