@@ -80,13 +80,18 @@ FETCH FIRST 20 ROWS ONLY;
 --REQUERIMIENTO 3:
 CREATE INDEX idx_alojamiento_checkin_idalojamiento ON alojamientos(checkin, idalojamiento);
 
-SELECT h.numhabitacion,
-       SUM(a.checkout - a.checkin) as dias_ocupados,
-       (SUM(a.checkout - a.checkin) / 365) * 100 as indice_ocupacion
-FROM habitaciones h
-JOIN alojamientos a ON h.idalojamiento = a.idalojamiento
-WHERE a.checkin BETWEEN ADD_MONTHS(SYSDATE, -12) AND SYSDATE
-GROUP BY h.numhabitacion;
+SELECT 
+    h.numhabitacion,
+    SUM(a.checkout - a.checkin) AS dias_ocupados,
+    (SUM(a.checkout - a.checkin) / 365) * 100 AS indice_ocupacion
+FROM 
+    habitaciones h
+JOIN 
+    alojamientos a ON h.idalojamiento = a.idalojamiento
+WHERE 
+    a.checkin BETWEEN ADD_MONTHS(SYSDATE, -12) AND SYSDATE
+GROUP BY 
+    h.numhabitacion;
 
 --REQUERIMIENTO 4:
 SELECT s.*, t.tipo
