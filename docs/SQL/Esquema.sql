@@ -1,3 +1,4 @@
+
 CREATE TABLE alojamientos (
     activa        VARCHAR2(2) NOT NULL,
     checkin       DATE NOT NULL,
@@ -14,23 +15,25 @@ ALTER TABLE alojamientos ADD CONSTRAINT alojamientos_pk PRIMARY KEY ( idalojamie
 
 CREATE TABLE bares (
     estilo     VARCHAR2(50) NOT NULL,
-    idservicio NUMBER NOT NULL
+    idservicio NUMBER NOT NULL,
+    idbar      NUMBER NOT NULL
 );
 
 ALTER TABLE bares
     ADD CHECK ( estilo IN ( 'Frances', 'Italiano', 'Mediterraneo', 'Mexicano', 'Oriental' ) );
 
-ALTER TABLE bares ADD CONSTRAINT bares_pk PRIMARY KEY ( idservicio );
+ALTER TABLE bares ADD CONSTRAINT bares_pk PRIMARY KEY ( idbar );
 
 CREATE TABLE conferencias (
-    capacidad  NUMBER NOT NULL,
-    fecha      DATE,
-    hora       DATE NOT NULL,
-    duracion   NUMBER NOT NULL,
-    idservicio NUMBER NOT NULL
+    capacidad     NUMBER NOT NULL,
+    fecha         DATE,
+    hora          DATE NOT NULL,
+    duracion      NUMBER NOT NULL,
+    idservicio    NUMBER NOT NULL,
+    idconferencia NUMBER NOT NULL
 );
 
-ALTER TABLE conferencias ADD CONSTRAINT conferencias_pk PRIMARY KEY ( idservicio );
+ALTER TABLE conferencias ADD CONSTRAINT conferencias_pk PRIMARY KEY ( idconferencia );
 
 CREATE TABLE cuentas (
     netocuenta    NUMBER NOT NULL,
@@ -43,10 +46,11 @@ ALTER TABLE cuentas ADD CONSTRAINT cuentas_pk PRIMARY KEY ( idcuenta );
 CREATE TABLE gimnasios (
     capacidad  NUMBER NOT NULL,
     maquinas   VARCHAR2(255) NOT NULL,
-    idservicio NUMBER NOT NULL
+    idservicio NUMBER NOT NULL,
+    idgimnasio NUMBER NOT NULL
 );
 
-ALTER TABLE gimnasios ADD CONSTRAINT gimnasios_pk PRIMARY KEY ( idservicio );
+ALTER TABLE gimnasios ADD CONSTRAINT gimnasios_pk PRIMARY KEY ( idgimnasio );
 
 CREATE TABLE habitaciones (
     numhabitacion NUMBER NOT NULL,
@@ -75,21 +79,23 @@ CREATE TABLE lavados (
     prendas    NUMBER NOT NULL,
     tipo       VARCHAR2(32) NOT NULL,
     zapatos    NUMBER NOT NULL,
-    idservicio NUMBER NOT NULL
+    idservicio NUMBER NOT NULL,
+    idlavado   NUMBER NOT NULL
 );
 
 ALTER TABLE lavados
     ADD CHECK ( prendas IN ( no, si ) );
 
-ALTER TABLE lavados ADD CONSTRAINT lavados_pk PRIMARY KEY ( idservicio );
+ALTER TABLE lavados ADD CONSTRAINT lavados_pk PRIMARY KEY ( idlavado );
 
 CREATE TABLE piscinas (
     capacidad   NUMBER NOT NULL,
     profundidad FLOAT NOT NULL,
-    idservicio  NUMBER NOT NULL
+    idservicio  NUMBER NOT NULL,
+    idpiscina   NUMBER NOT NULL
 );
 
-ALTER TABLE piscinas ADD CONSTRAINT piscinas_pk PRIMARY KEY ( idservicio );
+ALTER TABLE piscinas ADD CONSTRAINT piscinas_pk PRIMARY KEY ( idpiscina );
 
 CREATE TABLE planes (
     tipoplan  VARCHAR2(64) NOT NULL,
@@ -105,10 +111,10 @@ ALTER TABLE planes ADD CONSTRAINT planes_pk PRIMARY KEY ( idplan );
 CREATE TABLE productos (
     nombre        VARCHAR2(100) NOT NULL,
     precio        NUMBER NOT NULL,
+    idproducto    NUMBER NOT NULL,
     idrestaurante NUMBER NOT NULL,
     idbar         NUMBER NOT NULL,
-    idtienda      NUMBER NOT NULL,
-    idproducto    NUMBER NOT NULL
+    idtienda      NUMBER NOT NULL
 );
 
 ALTER TABLE productos ADD CONSTRAINT productos_pk PRIMARY KEY ( idproducto );
@@ -122,11 +128,12 @@ CREATE TABLE reservas (
 ALTER TABLE reservas ADD CONSTRAINT reservas_pk PRIMARY KEY ( idreserva );
 
 CREATE TABLE restaurantes (
-    estilo     VARCHAR2(50) NOT NULL,
-    idservicio NUMBER NOT NULL
+    estilo        VARCHAR2(50) NOT NULL,
+    idservicio    NUMBER NOT NULL,
+    idrestaurante NUMBER NOT NULL
 );
 
-ALTER TABLE restaurantes ADD CONSTRAINT restaurantes_pk PRIMARY KEY ( idservicio );
+ALTER TABLE restaurantes ADD CONSTRAINT restaurantes_pk PRIMARY KEY ( idrestaurante );
 
 CREATE TABLE reuniones (
     capacidad      NUMBER NOT NULL,
@@ -134,19 +141,20 @@ CREATE TABLE reuniones (
     fecha          DATE,
     hora           DATE NOT NULL,
     duracion       NUMBER NOT NULL,
-    idservicio     NUMBER NOT NULL
+    idservicio     NUMBER NOT NULL,
+    idreunion      NUMBER NOT NULL
 );
 
-ALTER TABLE reuniones ADD CONSTRAINT reuniones_pk PRIMARY KEY ( idservicio );
+ALTER TABLE reuniones ADD CONSTRAINT reuniones_pk PRIMARY KEY ( idreunion );
 
 CREATE TABLE servicios (
-    horarioinicial     DATE,
-    horariofinal       DATE,
-    costo              NUMBER NOT NULL,
-    cargado            VARCHAR2(2) NOT NULL,
-    existe             VARCHAR2(2) NOT NULL,
-    idservicio         NUMBER NOT NULL,
-    idreserva          NUMBER NOT NULL
+    horarioinicial DATE,
+    horariofinal   DATE,
+    costo          NUMBER NOT NULL,
+    cargado        VARCHAR2(2) NOT NULL,
+    existe         VARCHAR2(2) NOT NULL,
+    idservicio     NUMBER NOT NULL,
+    idreserva      NUMBER NOT NULL
 );
 
 ALTER TABLE servicios
@@ -161,28 +169,30 @@ CREATE TABLE servispas (
     duracion    NUMBER NOT NULL,
     costo       NUMBER NOT NULL,
     fecha       DATE NOT NULL,
-    idspa       NUMBER NOT NULL,
-    idservispas NUMBER NOT NULL
+    idservispas NUMBER NOT NULL,
+    idspa       NUMBER NOT NULL
 );
 
 ALTER TABLE servispas ADD CONSTRAINT servispas_pk PRIMARY KEY ( idservispas );
 
 CREATE TABLE spas (
     capacidad  NUMBER NOT NULL,
-    idservicio NUMBER NOT NULL
+    idservicio NUMBER NOT NULL,
+    idspa      NUMBER NOT NULL
 );
 
-ALTER TABLE spas ADD CONSTRAINT spas_pk PRIMARY KEY ( idservicio );
+ALTER TABLE spas ADD CONSTRAINT spas_pk PRIMARY KEY ( idspa );
 
 CREATE TABLE tiendas (
     tipo       VARCHAR2(40) NOT NULL,
-    idservicio NUMBER NOT NULL
+    idservicio NUMBER NOT NULL,
+    idtienda   NUMBER NOT NULL
 );
 
 ALTER TABLE tiendas
     ADD CHECK ( tipo IN ( 'Joyeria', 'Moda', 'Souvenirs', 'Supermercado' ) );
 
-ALTER TABLE tiendas ADD CONSTRAINT tiendas_pk PRIMARY KEY ( idservicio );
+ALTER TABLE tiendas ADD CONSTRAINT tiendas_pk PRIMARY KEY ( idtienda );
 
 CREATE TABLE tipos (
     tipo      VARCHAR2(64) NOT NULL,
@@ -211,22 +221,24 @@ ALTER TABLE usuarios
 ALTER TABLE usuarios ADD CONSTRAINT usuarios_pk PRIMARY KEY ( iduser );
 
 CREATE TABLE utensilios (
-    devuelto   VARCHAR2(2) NOT NULL,
-    estado     VARCHAR2(255) NOT NULL,
-    idservicio NUMBER NOT NULL
+    devuelto    VARCHAR2(2) NOT NULL,
+    estado      VARCHAR2(255) NOT NULL,
+    idservicio  NUMBER NOT NULL,
+    idutensilio NUMBER NOT NULL
 );
 
 ALTER TABLE utensilios
     ADD CHECK ( devuelto IN ( 'NO', 'SI' ) );
 
-ALTER TABLE utensilios ADD CONSTRAINT utensilios_pk PRIMARY KEY ( idservicio );
+ALTER TABLE utensilios ADD CONSTRAINT utensilios_pk PRIMARY KEY ( idutensilio );
 
 CREATE TABLE wifi (
     anchobanda FLOAT NOT NULL,
-    idservicio NUMBER NOT NULL
+    idservicio NUMBER NOT NULL,
+    idwifi     NUMBER NOT NULL
 );
 
-ALTER TABLE wifi ADD CONSTRAINT wifi_pk PRIMARY KEY ( idservicio );
+ALTER TABLE wifi ADD CONSTRAINT wifi_pk PRIMARY KEY ( idwifi );
 
 ALTER TABLE alojamientos
     ADD CONSTRAINT alojamientos_planes_fk FOREIGN KEY ( idplan )
@@ -274,17 +286,17 @@ ALTER TABLE piscinas
 
 ALTER TABLE productos
     ADD CONSTRAINT productos_bares_fk FOREIGN KEY ( idbar )
-        REFERENCES bares ( idservicio )
+        REFERENCES bares ( idbar )
             ON DELETE CASCADE;
 
 ALTER TABLE productos
     ADD CONSTRAINT productos_restaurantes_fk FOREIGN KEY ( idrestaurante )
-        REFERENCES restaurantes ( idservicio )
+        REFERENCES restaurantes ( idrestaurante )
             ON DELETE CASCADE;
 
 ALTER TABLE productos
     ADD CONSTRAINT productos_tiendas_fk FOREIGN KEY ( idtienda )
-        REFERENCES tiendas ( idservicio )
+        REFERENCES tiendas ( idtienda )
             ON DELETE CASCADE;
 
 ALTER TABLE reservas
@@ -307,7 +319,7 @@ ALTER TABLE servicios
 
 ALTER TABLE servispas
     ADD CONSTRAINT servispas_spas_fk FOREIGN KEY ( idspa )
-        REFERENCES spas ( idservicio )
+        REFERENCES spas ( idspa )
             ON DELETE CASCADE;
 
 ALTER TABLE spas
