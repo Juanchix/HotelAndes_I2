@@ -38,7 +38,7 @@ public interface HotelRepo extends JpaRepository <Hotel, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM hoteles WHERE idhotel =: idhotel", nativeQuery = true)
+    @Query(value = "DELETE FROM hoteles WHERE idhotel = :idhotel", nativeQuery = true)
     void eliminarHotel(@Param("idhotel") int idhotel);
 
 }

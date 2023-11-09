@@ -40,6 +40,6 @@ public interface ReunionRepo extends JpaRepository <Reunion, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM reuniones WHERE idreunion =: idreunion", nativeQuery = true)
+    @Query(value = "DELETE FROM reuniones WHERE idreunion = :idreunion", nativeQuery = true)
     void eliminarReunion(@Param("idreunion") int idreunion);
 }

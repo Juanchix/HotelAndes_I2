@@ -38,7 +38,7 @@ public interface TipoRepo extends JpaRepository <Tipo, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM tipos WHERE idtipo =: idtipo", nativeQuery = true)
+    @Query(value = "DELETE FROM tipos WHERE idtipo = :idtipo", nativeQuery = true)
     void eliminarTipo(@Param("idtipo") int idtipo);
 
 }

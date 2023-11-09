@@ -42,7 +42,7 @@ public interface AlojamientoRepo extends JpaRepository <Alojamiento, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM alojamientos WHERE idalojamiento =: idalojamiento", nativeQuery = true)
+    @Query(value = "DELETE FROM alojamientos WHERE idalojamiento = :idalojamiento", nativeQuery = true)
     void eliminarAlojamiento(@Param("idalojamiento") int idalojamiento);
 
     //REQ6

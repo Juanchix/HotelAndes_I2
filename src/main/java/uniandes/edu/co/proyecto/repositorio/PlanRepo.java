@@ -37,6 +37,6 @@ public interface PlanRepo extends JpaRepository <Plan, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM planes WHERE idplan =: idplan", nativeQuery = true)
+    @Query(value = "DELETE FROM planes WHERE idplan = :idplan", nativeQuery = true)
     void eliminarPlan(@Param("idplan") int idplan);
 }

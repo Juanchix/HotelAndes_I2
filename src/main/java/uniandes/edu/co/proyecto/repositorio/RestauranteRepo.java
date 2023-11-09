@@ -37,6 +37,6 @@ public interface RestauranteRepo extends JpaRepository <Restaurante, Integer> {
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM restaurantes WHERE idrestaurante =: idrestaurante", nativeQuery = true)
+    @Query(value = "DELETE FROM restaurantes WHERE idrestaurante = :idrestaurante", nativeQuery = true)
     void eliminarRestaurante(@Param("idrestaurante") int idrestaurante);
 }
