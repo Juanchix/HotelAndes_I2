@@ -16,7 +16,7 @@ public interface HotelRepo extends JpaRepository <Hotel, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO hoteles (idhotel, nombrehotel, nithotel) VALUES (parranderos_sequence.nextval, :nombrehotel, :nithotel)", nativeQuery = true)
+    @Query(value = "INSERT INTO hoteles (nombrehotel, nithotel, idhotel) VALUES (:nombrehotel, :nithotel, parranderos_sequence.nextval)", nativeQuery = true)
     void insertarHotel(@Param("nombrehotel") String nombrehotel, @Param("nithotel") Integer nithotel);
 
 
@@ -34,7 +34,7 @@ public interface HotelRepo extends JpaRepository <Hotel, Integer> {
     @Query(value = "UPDATE hoteles SET nombrehotel=:nombrehotel, nithotel=:nithotel WHERE idhotel=:idhotel", nativeQuery = true)
     void actualizarHotel(@Param("idhotel") int idhotel, @Param("nombrehotel") String nombrehotel, @Param("nithotel") Integer nithotel);
 
-
+    
     // Delete
     @Modifying
     @Transactional

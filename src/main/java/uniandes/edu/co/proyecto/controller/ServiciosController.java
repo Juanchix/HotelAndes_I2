@@ -26,12 +26,12 @@ public class ServiciosController {
     @GetMapping("/servicios/new")
     public String servicioForm(Model model){
         model.addAttribute("servicio", new Servicio());
-        return "servicioNuevo";
+        return "serviciosNuevo";
     }
 
     @PostMapping("/servicios/new/save")
     public String servicioGuardar(@ModelAttribute Servicio servicio){
-        servicioRepo.insertarServicio(servicio.getHorarioinicio(), servicio.getHorariofin(), servicio.getNombre(), servicio.getCosto(), servicio.getCargado(), servicio.getExiste(), servicio.getReserva());
+        servicioRepo.insertarServicio(servicio.getHorarioinicial(), servicio.getHorariofinal(), servicio.getCosto(), servicio.getCargado(), servicio.getExiste(), servicio.getIdreserva());
         return "redirect:/servicios";
     }
 
@@ -42,13 +42,13 @@ public class ServiciosController {
             model.addAttribute("servicio", servicio);
             return "serviciosEditar";
         } else {
-            return "redirect:/servicio";
+            return "redirect:/servicios";
         }
     }
 
     @PostMapping("/servicios/{id}/edit/save")
     public String servicioEditarGuardar(@PathVariable("id") int id, @ModelAttribute Servicio servicio){
-        servicioRepo.actualizarServicio(id, servicio.getHorarioinicio(), servicio.getHorariofin(), servicio.getNombre(), servicio.getCosto(), servicio.getCargado(), servicio.getExiste(), servicio.getReserva());
+        servicioRepo.actualizarServicio(id, servicio.getHorarioinicial(), servicio.getHorariofinal(), servicio.getCosto(), servicio.getCargado(), servicio.getExiste(), servicio.getIdreserva());
         return "redirect:/servicios";
     }
 

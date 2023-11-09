@@ -26,12 +26,12 @@ public class GimnasiosController {
     @GetMapping("/gimnasios/new")
     public String gimnasioForm(Model model){
         model.addAttribute("gimnasio", new Gimnasio());
-        return "gimnasioNuevo";
+        return "gimnasiosNuevo";
     }
 
     @PostMapping("/gimnasios/new/save")
     public String gimnasioGuardar(@ModelAttribute Gimnasio gimnasio){
-        gimnasioRepo.insertarGimnasio(gimnasio.getCapacidad(), gimnasio.getMaquinas());
+        gimnasioRepo.insertarGimnasio(gimnasio.getCapacidad(), gimnasio.getMaquinas(), gimnasio.getIdservicio());
         return "redirect:/gimnasios";
     }
 
@@ -42,13 +42,13 @@ public class GimnasiosController {
             model.addAttribute("gimnasio", gimnasio);
             return "gimnasiosEditar";
         } else {
-            return "redirect:/gimnasio";
+            return "redirect:/gimnasios";
         }
     }
 
     @PostMapping("/gimnasios/{id}/edit/save")
     public String gimnasioEditarGuardar(@PathVariable("id") int id, @ModelAttribute Gimnasio gimnasio){
-        gimnasioRepo.actualizarGimnasio(id, gimnasio.getCapacidad(), gimnasio.getMaquinas());
+        gimnasioRepo.actualizarGimnasio(id, gimnasio.getCapacidad(), gimnasio.getMaquinas(), gimnasio.getIdservicio());
         return "redirect:/gimnasios";
     }
 

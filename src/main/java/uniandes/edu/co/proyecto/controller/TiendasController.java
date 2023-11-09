@@ -26,12 +26,12 @@ public class TiendasController {
     @GetMapping("/tiendas/new")
     public String tiendaForm(Model model){
         model.addAttribute("tienda", new Tienda());
-        return "tiendaNuevo";
+        return "tiendasNuevo";
     }
 
     @PostMapping("/tiendas/new/save")
     public String tiendaGuardar(@ModelAttribute Tienda tienda){
-        tiendaRepo.insertarTienda(tienda.getTipo());
+        tiendaRepo.insertarTienda(tienda.getTipo(), tienda.getIdservicio());
         return "redirect:/tiendas";
     }
 
@@ -42,13 +42,13 @@ public class TiendasController {
             model.addAttribute("tienda", tienda);
             return "tiendasEditar";
         } else {
-            return "redirect:/tienda";
+            return "redirect:/tiendas";
         }
     }
 
     @PostMapping("/tiendas/{id}/edit/save")
     public String tiendaEditarGuardar(@PathVariable("id") int id, @ModelAttribute Tienda tienda){
-        tiendaRepo.actualizarTienda(id, tienda.getTipo());
+        tiendaRepo.actualizarTienda(id, tienda.getTipo(), tienda.getIdservicio());
         return "redirect:/tiendas";
     }
 

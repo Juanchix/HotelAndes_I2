@@ -25,17 +25,17 @@ public class Servispa {
     private Date fecha;
     //FK
     @ManyToOne
-    @JoinColumn(name="servicios", referencedColumnName = "idservicio")
-    private Spa spa;
+    @JoinColumn(name="idspa", referencedColumnName = "idservicio")
+    private Spa idspa;
 
 
     // Constructor
-    public Servispa(Integer duracion, Integer costo, Date fecha, Spa spa)
+    public Servispa(Integer duracion, Integer costo, Date fecha, Spa idspa)
     {
         this.duracion = duracion;
         this.costo = costo;
         this.fecha = fecha;
-        this.spa = spa;
+        this.idspa = idspa;
     }
 
 
@@ -59,8 +59,8 @@ public class Servispa {
         return fecha;
     }
 
-    public Spa getSpa() {
-        return spa;
+    public Spa getIdpa() {
+        return idspa;
     }
 
 
@@ -81,8 +81,8 @@ public class Servispa {
         this.fecha = fecha;
     }
 
-    public void setSpa(Spa spa) {
-        this.spa = spa;
+    public void setIdspa(Spa idspa) {
+        this.idspa = idspa;
     }
 
 }

@@ -26,12 +26,12 @@ public class ReservasController {
     @GetMapping("/reservas/new")
     public String reservaForm(Model model){
         model.addAttribute("reserva", new Reserva());
-        return "reservaNuevo";
+        return "reservasNuevo";
     }
 
     @PostMapping("/reservas/new/save")
     public String reservaGuardar(@ModelAttribute Reserva reserva){
-        reservaRepo.insertarReserva(reserva.getHorareserva(), reserva.getCuenta());
+        reservaRepo.insertarReserva(reserva.getHorareserva(), reserva.getIdcuenta());
         return "redirect:/reservas";
     }
 
@@ -42,13 +42,13 @@ public class ReservasController {
             model.addAttribute("reserva", reserva);
             return "reservasEditar";
         } else {
-            return "redirect:/reserva";
+            return "redirect:/reservas";
         }
     }
 
     @PostMapping("/reservas/{id}/edit/save")
     public String reservaEditarGuardar(@PathVariable("id") int id, @ModelAttribute Reserva reserva){
-        reservaRepo.actualizarReserva(id, reserva.getHorareserva(), reserva.getCuenta());
+        reservaRepo.actualizarReserva(id, reserva.getHorareserva(), reserva.getIdcuenta());
         return "redirect:/reservas";
     }
 

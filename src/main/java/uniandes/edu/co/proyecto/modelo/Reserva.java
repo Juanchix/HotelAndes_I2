@@ -23,15 +23,15 @@ public class Reserva {
     private Date horareserva;
     //FK
     @ManyToOne
-    @JoinColumn(name = "cuentas", referencedColumnName = "idcuenta")
-    private Cuenta cuenta;
+    @JoinColumn(name = "idcuenta", referencedColumnName = "idcuenta")
+    private Cuenta idcuenta;
 
 
     // Constructor
-    public Reserva(Date horareserva, Cuenta cuenta)
+    public Reserva(Date horareserva, Cuenta idcuenta)
     {
         this.horareserva = horareserva;
-        this.cuenta = cuenta;
+        this.idcuenta = idcuenta;
     }
 
 
@@ -47,8 +47,8 @@ public class Reserva {
         return horareserva;
     }
 
-    public Cuenta getCuenta() {
-        return cuenta;
+    public Cuenta getIdcuenta() {
+        return idcuenta;
     }
 
 
@@ -61,8 +61,8 @@ public class Reserva {
         this.horareserva = horareserva;
     }
 
-    public void setCuenta(Cuenta cuenta) {
-        this.cuenta = cuenta;
+    public void setIdcuenta(Cuenta idcuenta) {
+        this.idcuenta = idcuenta;
     }
 
 }

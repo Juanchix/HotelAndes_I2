@@ -26,12 +26,12 @@ public class UsuariosController {
     @GetMapping("/usuarios/new")
     public String usuarioForm(Model model){
         model.addAttribute("usuario", new Usuario());
-        return "usuarioNuevo";
+        return "usuariosNuevo";
     }
 
     @PostMapping("/usuarios/new/save")
     public String usuarioGuardar(@ModelAttribute Usuario usuario){
-        usuarioRepo.insertarUsuario(usuario.getNombreuser(), usuario.getTipodocuser(), usuario.getNumdocuser(), usuario.getCorreouser());
+        usuarioRepo.insertarUsuario(usuario.getNombreuser(), usuario.getTipodocuser(), usuario.getNumdocuser(), usuario.getCorreouser(), usuario.getIdalojamiento());
         return "redirect:/usuarios";
     }
 
@@ -42,13 +42,13 @@ public class UsuariosController {
             model.addAttribute("usuario", usuario);
             return "usuariosEditar";
         } else {
-            return "redirect:/usuario";
+            return "redirect:/usuarios";
         }
     }
 
     @PostMapping("/usuarios/{id}/edit/save")
     public String usuarioEditarGuardar(@PathVariable("id") int id, @ModelAttribute Usuario usuario){
-        usuarioRepo.actualizarUsuario(id, usuario.getNombreuser(), usuario.getTipodocuser(), usuario.getNumdocuser(), usuario.getCorreouser());
+        usuarioRepo.actualizarUsuario(id, usuario.getNombreuser(), usuario.getTipodocuser(), usuario.getNumdocuser(), usuario.getCorreouser(), usuario.getIdalojamiento());
         return "redirect:/usuarios";
     }
 

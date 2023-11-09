@@ -10,18 +10,24 @@ public class Gimnasio{
 
     // Atributos
     @Id //PK
-    private Integer idservicio;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idgimnasio;
 
     private Integer capacidad;
     private String maquinas;
+    //FK
+    @ManyToOne
+    @JoinColumn(name="idservicio", referencedColumnName = "idservicio")
+    private Servicio idservicio;
 
 
     // Constructor
-    public Gimnasio(Integer idservicio, Integer capacidad, String maquinas)
+    public Gimnasio(Integer capacidad, String maquinas, Servicio idservicio, Integer idgimnasio)
     {
-        this.idservicio = idservicio;
         this.capacidad = capacidad;
         this.maquinas = maquinas;
+        this.idservicio = idservicio;
+        this.idgimnasio = idgimnasio;
     }
 
 
@@ -29,8 +35,9 @@ public class Gimnasio{
 
 
     // Getters
-    public Integer getIdservicio(){
-        return idservicio;
+    public Integer getIdgimnasio()
+    {
+        return this.idgimnasio;
     }
 
     public Integer getCapacidad() {
@@ -41,11 +48,15 @@ public class Gimnasio{
         return maquinas;
     }
 
+    public Servicio getIdservicio(){
+        return idservicio;
+    }
+
 
     // Setters
-    public void setIdservicio(Integer idservicio)
+    public void setIdgimnasio(Integer idgimnasio)
     {
-        this.idservicio = idservicio;
+        this.idgimnasio = idgimnasio;
     }
 
     public void setCapacidad(Integer capacidad) {
@@ -56,4 +67,8 @@ public class Gimnasio{
         this.maquinas = maquinas;
     }
 
+    public void setIdservicio(Servicio idservicio)
+    {
+        this.idservicio = idservicio;
+    }
 }

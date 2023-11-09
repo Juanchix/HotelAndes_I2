@@ -26,7 +26,7 @@ public class TiposController {
     @GetMapping("/tipos/new")
     public String tipoForm(Model model){
         model.addAttribute("tipo", new Tipo());
-        return "tipoNuevo";
+        return "tiposNuevo";
     }
 
     @PostMapping("/tipos/new/save")
@@ -42,7 +42,7 @@ public class TiposController {
             model.addAttribute("tipo", tipo);
             return "tiposEditar";
         } else {
-            return "redirect:/tipo";
+            return "redirect:/tipos";
         }
     }
 

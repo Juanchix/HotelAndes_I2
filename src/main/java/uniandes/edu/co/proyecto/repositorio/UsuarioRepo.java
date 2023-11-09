@@ -18,9 +18,9 @@ public interface UsuarioRepo extends JpaRepository <Usuario, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO usuarios (iduser, nombreuser, tipodocuser, numdocuser, correouser) VALUES (parranderos_sequence.nextval, :nombreuser, :tipodocuser, :numdocuser, :correouser)", nativeQuery = true)
-    void insertarUsuario(@Param("nombreuser") String nombreuser, @Param("tipodocuser") String tipodocuser, @Param("numdocuser") Integer numdocuser, 
-                            @Param("correouser") String correouser);
+    @Query(value = "INSERT INTO usuarios (nombreuser, tipodocuser, numdocuser, correouser, iduser, idalojamiento) VALUES (:nombreuser, :tipodocuser, :numdocuser, :correouser, parranderos_sequence.nextval, :idalojamiento)", nativeQuery = true)
+    void insertarUsuario(@Param("nombreuser") String nombreuser, @Param("tipodocuser") String tipodocuser, @Param("numdocuser") Long numdocuser, 
+                        @Param("correouser") String correouser, @Param("idalojamiento") Alojamiento idalojamiento);
 
 
     // Read
@@ -28,22 +28,22 @@ public interface UsuarioRepo extends JpaRepository <Usuario, Integer> {
     Collection<Usuario> darUsuarios();
 
     @Query(value = "SELECT * FROM usuarios WHERE iduser = :iduser", nativeQuery = true)
-    Usuario darUsuario(@Param("iduser") Integer iduser);
+    Usuario darUsuario(@Param("iduser") int iduser);
 
 
     // Update
     @Modifying
     @Transactional
-    @Query(value = "UPDATE usuarios SET nombreuser=:nombreuser, tipodocuser=:tipodocuser, numdocuser=:numdocuser, correouser=:correouser WHERE iduser=:iduser", nativeQuery = true)
-    void actualizarUsuario(@Param("iduser") Integer iduser, @Param("nombreuser") String nombreuser, @Param("tipodocuser") String tipodocuser, @Param("numdocuser") Integer numdocuser, 
-                            @Param("correouser") String correouser);
+    @Query(value = "UPDATE usuarios SET nombreuser=:nombreuser, tipodocuser=:tipodocuser, numdocuser=:numdocuser, correouser=:correouser, idalojamiento=:idalojamiento WHERE iduser=:iduser", nativeQuery = true)
+    void actualizarUsuario(@Param("iduser") int iduser, @Param("nombreuser") String nombreuser, @Param("tipodocuser") String tipodocuser, @Param("numdocuser") Long numdocuser, 
+                        @Param("correouser") String correouser, @Param("idalojamiento") Alojamiento idalojamiento);
 
 
     // Delete
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM usuarios WHERE iduser =: iduser", nativeQuery = true)
-    void eliminarUsuario(@Param("iduser") Integer iduser);
+    void eliminarUsuario(@Param("iduser") int iduser);
 
     //REQ5
     @Query(value = "SELECT u.nombreuser, " +

@@ -10,16 +10,22 @@ public class Spa {
 
     // Atributos
     @Id //PK
-    private Integer idservicio;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idspa;
 
     private Integer capacidad;
+    //FK
+    @ManyToOne
+    @JoinColumn(name="idservicio", referencedColumnName = "idservicio")
+    private Servicio idservicio;
 
 
     // Constructor
-    public Spa(Integer idservicio, Integer capacidad)
+    public Spa(Integer capacidad, Servicio idservicio, Integer idspa)
     {
-        this.idservicio = idservicio;
         this.capacidad = capacidad;
+        this.idservicio = idservicio;
+        this.idspa = idspa;
     }
 
 
@@ -27,23 +33,29 @@ public class Spa {
 
 
     // Getters
-    public Integer getIdservicio(){
-        return idservicio;
-    }
-
     public Integer getCapacidad() {
         return capacidad;
     }
 
+    public Servicio getIdservicio(){
+        return idservicio;
+    }
+
+    public Integer getIdspa(){
+        return idspa;
+    }
 
     // Setters
-    public void setIdservicio(Integer idservicio)
-    {
+    public void setCapacidad(Integer capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public void setIdservicio(Servicio idservicio) {
         this.idservicio = idservicio;
     }
 
-    public void setCapacidad(Integer capacidad) {
-        this.capacidad = capacidad;
+    public void setIdspa(Integer idspa) {
+        this.idspa = idspa;
     }
 
 }

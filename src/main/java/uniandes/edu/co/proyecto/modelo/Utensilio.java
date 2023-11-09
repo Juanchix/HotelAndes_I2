@@ -10,29 +10,31 @@ public class Utensilio {
 
     // Atributos
     @Id //PK
-    private Integer idservicio;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idutensilio;
 
     private String devuelto;
     private String estado;
+    //FK
+    @ManyToOne
+    @JoinColumn(name="idservicio", referencedColumnName = "idservicio")
+    private Servicio idservicio;
+
 
 
     // Constructor
-    public Utensilio(Integer idservicio, String devuelto, String estado)
+    public Utensilio(String devuelto, String estado, Servicio idservicio, Integer idutensilio)
     {
-        this.idservicio = idservicio;
         this.devuelto = devuelto;
         this.estado = estado;
+        this.idservicio = idservicio;
+        this.idutensilio = idutensilio;
     }
-
 
     public Utensilio(){;}
 
 
     // Getters
-    public Integer getIdservicio(){
-        return idservicio;
-    }
-
     public String getDevuelto()
     {
         return this.devuelto;
@@ -43,13 +45,16 @@ public class Utensilio {
         return this.estado;
     }
 
-
-    // Setters
-    public void setIdservicio(Integer idservicio)
-    {
-        this.idservicio = idservicio;
+    public Servicio getIdservicio(){
+        return idservicio;
     }
 
+    public Integer getIdutensilio(){
+        return idutensilio;
+    }
+
+
+    // Setters
     public void setDevuelto(String devuelto)
     {
         this.devuelto = devuelto;
@@ -58,6 +63,16 @@ public class Utensilio {
     public void setEstado(String estado)
     {
         this.estado = estado;
+    }
+
+    public void setIdservicio(Servicio idservicio)
+    {
+        this.idservicio = idservicio;
+    }
+
+    public void setIdutensilio(Integer idutensilio)
+    {
+        this.idutensilio = idutensilio;
     }
 
 }

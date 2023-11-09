@@ -20,17 +20,22 @@ public class Usuario {
 
     private String nombreuser;
     private String tipodocuser;
-    private Integer numdocuser;
+    private Long numdocuser;
     private String correouser;
+    //FK
+    @ManyToOne
+    @JoinColumn(name = "idalojamiento", referencedColumnName = "idalojamiento")
+    private Alojamiento idalojamiento;
 
 
     // Constructor
-    public Usuario(String nombreuser, String tipodocuser, Integer numdocuser, String correouser)
+    public Usuario(String nombreuser, String tipodocuser, Long numdocuser, String correouser, Alojamiento idalojamiento)
     {
         this.nombreuser = nombreuser;
         this.tipodocuser = tipodocuser;
         this.numdocuser = numdocuser;
         this.correouser = correouser;
+        this.idalojamiento = idalojamiento;
     }
 
 
@@ -50,12 +55,16 @@ public class Usuario {
         return tipodocuser;
     }
 
-    public Integer getNumdocuser() {
+    public Long getNumdocuser() {
         return numdocuser;
     }
 
     public String getCorreouser() {
         return correouser;
+    }
+
+    public Alojamiento getIdalojamiento() {
+        return idalojamiento;
     }
 
 
@@ -73,12 +82,16 @@ public class Usuario {
         this.tipodocuser = tipodocuser;
     }
 
-    public void setNumdocuser(Integer numdocuser) {
+    public void setNumdocuser(Long numdocuser) {
         this.numdocuser = numdocuser;
     }
 
     public void setCorreouser(String correouser) {
         this.correouser = correouser;
+    }
+
+    public void setIdalojamiento(Alojamiento idalojamiento) {
+        this.idalojamiento = idalojamiento;
     }
 
 }

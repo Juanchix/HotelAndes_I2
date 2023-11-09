@@ -26,12 +26,12 @@ public class UtensiliosController {
     @GetMapping("/utensilios/new")
     public String utensilioForm(Model model){
         model.addAttribute("utensilio", new Utensilio());
-        return "utensilioNuevo";
+        return "utensiliosNuevo";
     }
 
     @PostMapping("/utensilios/new/save")
     public String utensilioGuardar(@ModelAttribute Utensilio utensilio){
-        utensilioRepo.insertarUtensilio(utensilio.getDevuelto(), utensilio.getEstado());
+        utensilioRepo.insertarUtensilio(utensilio.getDevuelto(), utensilio.getEstado(), utensilio.getIdservicio());
         return "redirect:/utensilios";
     }
 
@@ -42,13 +42,13 @@ public class UtensiliosController {
             model.addAttribute("utensilio", utensilio);
             return "utensiliosEditar";
         } else {
-            return "redirect:/utensilio";
+            return "redirect:/utensilios";
         }
     }
 
     @PostMapping("/utensilios/{id}/edit/save")
     public String utensilioEditarGuardar(@PathVariable("id") int id, @ModelAttribute Utensilio utensilio){
-        utensilioRepo.actualizarUtensilio(id, utensilio.getDevuelto(), utensilio.getEstado());
+        utensilioRepo.actualizarUtensilio(id, utensilio.getDevuelto(), utensilio.getEstado(), utensilio.getIdservicio());
         return "redirect:/utensilios";
     }
 

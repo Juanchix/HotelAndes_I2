@@ -26,12 +26,12 @@ public class RestaurantesController {
     @GetMapping("/restaurantes/new")
     public String restauranteForm(Model model){
         model.addAttribute("restaurante", new Restaurante());
-        return "restauranteNuevo";
+        return "restaurantesNuevo";
     }
 
     @PostMapping("/restaurantes/new/save")
     public String restauranteGuardar(@ModelAttribute Restaurante restaurante){
-        restauranteRepo.insertarRestaurante(restaurante.getEstilo());
+        restauranteRepo.insertarRestaurante(restaurante.getEstilo(), restaurante.getIdservicio());
         return "redirect:/restaurantes";
     }
 
@@ -42,13 +42,13 @@ public class RestaurantesController {
             model.addAttribute("restaurante", restaurante);
             return "restaurantesEditar";
         } else {
-            return "redirect:/restaurante";
+            return "redirect:/restaurantes";
         }
     }
 
     @PostMapping("/restaurantes/{id}/edit/save")
     public String restauranteEditarGuardar(@PathVariable("id") int id, @ModelAttribute Restaurante restaurante){
-        restauranteRepo.actualizarRestaurante(id, restaurante.getEstilo());
+        restauranteRepo.actualizarRestaurante(id, restaurante.getEstilo(), restaurante.getIdservicio());
         return "redirect:/restaurantes";
     }
 

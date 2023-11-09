@@ -26,12 +26,12 @@ public class PiscinasController {
     @GetMapping("/piscinas/new")
     public String piscinaForm(Model model){
         model.addAttribute("piscina", new Piscina());
-        return "piscinaNuevo";
+        return "piscinasNuevo";
     }
 
     @PostMapping("/piscinas/new/save")
     public String piscinaGuardar(@ModelAttribute Piscina piscina){
-        piscinaRepo.insertarPiscina(piscina.getCapacidad(), piscina.getProfundidad());
+        piscinaRepo.insertarPiscina(piscina.getCapacidad(), piscina.getProfundidad(), piscina.getIdservicio());
         return "redirect:/piscinas";
     }
 
@@ -42,13 +42,13 @@ public class PiscinasController {
             model.addAttribute("piscina", piscina);
             return "piscinasEditar";
         } else {
-            return "redirect:/piscina";
+            return "redirect:/piscinas";
         }
     }
 
     @PostMapping("/piscinas/{id}/edit/save")
     public String piscinaEditarGuardar(@PathVariable("id") int id, @ModelAttribute Piscina piscina){
-        piscinaRepo.actualizarPiscina(id, piscina.getCapacidad(), piscina.getProfundidad());
+        piscinaRepo.actualizarPiscina(id, piscina.getCapacidad(), piscina.getProfundidad(), piscina.getIdservicio());
         return "redirect:/piscinas";
     }
 

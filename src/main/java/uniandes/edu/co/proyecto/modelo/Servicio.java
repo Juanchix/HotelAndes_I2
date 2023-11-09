@@ -20,28 +20,26 @@ public class Servicio {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idservicio;
 
-    private Time horarioinicio;
-    private Time horariofin;
-    private String nombre;
+    private Time horarioinicial;
+    private Time horariofinal;
     private Integer costo;
     private String cargado;
     private String existe;
     //FK
     @ManyToOne
-    @JoinColumn(name="reservas", referencedColumnName = "idreserva")
-    private Reserva reserva;
+    @JoinColumn(name="idreserva", referencedColumnName = "idreserva")
+    private Reserva idreserva;
 
 
     // Constructor
-    public Servicio(Time horarioinicio, Time horariofin, String nombre, Integer costo, String cargado, String existe, Reserva reserva)
+    public Servicio(Time horarioinicial, Time horariofinal, Integer costo, String cargado, String existe, Reserva idreserva)
     {
-        this.horarioinicio = horarioinicio;
-        this.horariofin = horariofin;
-        this.nombre = nombre;
+        this.horarioinicial = horarioinicial;
+        this.horariofinal = horariofinal;
         this.costo = costo;
         this.cargado = cargado;
         this.existe = existe;
-        this.reserva = reserva;
+        this.idreserva = idreserva;
     }
 
 
@@ -53,16 +51,12 @@ public class Servicio {
         return idservicio;
     }
 
-    public Time getHorarioinicio() {
-        return horarioinicio;
+    public Time getHorarioinicial() {
+        return horarioinicial;
     }
 
-    public Time getHorariofin() {
-        return horariofin;
-    }
-
-    public String getNombre() {
-        return nombre;
+    public Time getHorariofinal() {
+        return horariofinal;
     }
 
     public Integer getCosto() {
@@ -77,8 +71,8 @@ public class Servicio {
         return existe;
     }
 
-    public Reserva getReserva() {
-        return reserva;
+    public Reserva getIdreserva() {
+        return idreserva;
     }
 
 
@@ -87,16 +81,12 @@ public class Servicio {
         this.idservicio = idservicio;
     }
 
-    public void setHorarioinicio(Time horarioinicio) {
-        this.horarioinicio = horarioinicio;
+    public void setHorarioinicial(Time horarioinicial) {
+        this.horarioinicial = horarioinicial;
     }
 
-    public void setHorariofin(Time horariofin) {
-        this.horariofin = horariofin;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setHorariofinal(Time horariofinal) {
+        this.horariofinal = horariofinal;
     }
 
     public void setCosto(Integer costo) {
@@ -111,8 +101,8 @@ public class Servicio {
         this.existe = existe;
     }
 
-    public void setReserva(Reserva reserva) {
-        this.reserva = reserva;
+    public void setIdreserva(Reserva idreserva) {
+        this.idreserva = idreserva;
     }
 
 }

@@ -15,7 +15,7 @@ public interface PlanRepo extends JpaRepository <Plan, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO planes (idplan, tipoplan, descuento) VALUES (parranderos_sequence.nextval, :tipoplan, :descuento)", nativeQuery = true)
+    @Query(value = "INSERT INTO planes (tipoplan, descuento, idplan) VALUES (:tipoplan, :descuento, parranderos_sequence.nextval)", nativeQuery = true)
     void insertarPlan(@Param("tipoplan") String tipoplan, @Param("descuento") Float descuento);
 
 
@@ -24,19 +24,19 @@ public interface PlanRepo extends JpaRepository <Plan, Integer> {
     Collection<Plan> darPlanes();
 
     @Query(value = "SELECT * FROM planes WHERE idplan = :idplan", nativeQuery = true)
-    Plan darPlan(@Param("idplan") Integer idplan);
+    Plan darPlan(@Param("idplan") int idplan);
 
 
     // Update
     @Modifying
     @Transactional
     @Query(value = "UPDATE planes SET tipoplan=:tipoplan, descuento=:descuento WHERE idplan=:idplan", nativeQuery = true)
-    void actualizarPlan(@Param("idplan") Integer idplan, @Param("tipoplan") String tipoplan, @Param("descuento") Float descuento);
+    void actualizarPlan(@Param("idplan") int idplan, @Param("tipoplan") String tipoplan, @Param("descuento") Float descuento);
 
 
     // Delete
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM planes WHERE idplan =: idplan", nativeQuery = true)
-    void eliminarPlan(@Param("idplan") Integer idplan);
+    void eliminarPlan(@Param("idplan") int idplan);
 }

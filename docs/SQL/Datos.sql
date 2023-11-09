@@ -1367,3 +1367,5 @@ INSERT INTO productos (nombre, precio, idrestaurante, idbar, idtienda, idproduct
 INSERT INTO productos (nombre, precio, idrestaurante, idbar, idtienda, idproducto) VALUES ('Emoción de Chocolate', 35.00, 98, 18, 158, 18);
 INSERT INTO productos (nombre, precio, idrestaurante, idbar, idtienda, idproducto) VALUES ('Cóctel de la Casa', 22.00, 99, 19, 159, 19);
 INSERT INTO productos (nombre, precio, idrestaurante, idbar, idtienda, idproducto) VALUES ('Amanecer Andaluz', 28.00, 100, 20, 160, 20);
+
+COMMIT;

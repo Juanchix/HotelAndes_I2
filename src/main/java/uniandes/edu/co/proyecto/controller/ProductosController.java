@@ -26,12 +26,12 @@ public class ProductosController {
     @GetMapping("/productos/new")
     public String productoForm(Model model){
         model.addAttribute("producto", new Producto());
-        return "productoNuevo";
+        return "productosNuevo";
     }
 
     @PostMapping("/productos/new/save")
     public String productoGuardar(@ModelAttribute Producto producto){
-        productoRepo.insertarProducto(producto.getNombre(), producto.getPrecio(), producto.getBar(), producto.getRestaurante(), producto.getTienda());
+        productoRepo.insertarProducto(producto.getNombre(), producto.getPrecio(), producto.getIdrestaurante(), producto.getIdbar(), producto.getIdtienda());
         return "redirect:/productos";
     }
 
@@ -42,13 +42,13 @@ public class ProductosController {
             model.addAttribute("producto", producto);
             return "productosEditar";
         } else {
-            return "redirect:/producto";
+            return "redirect:/productos";
         }
     }
 
     @PostMapping("/productos/{id}/edit/save")
     public String productoEditarGuardar(@PathVariable("id") int id, @ModelAttribute Producto producto){
-        productoRepo.actualizarProducto(id, producto.getNombre(), producto.getPrecio(), producto.getBar(), producto.getRestaurante(), producto.getTienda());
+        productoRepo.actualizarProducto(id, producto.getNombre(), producto.getPrecio(), producto.getIdrestaurante(), producto.getIdbar(), producto.getIdtienda());
         return "redirect:/productos";
     }
 

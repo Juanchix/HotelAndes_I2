@@ -26,12 +26,12 @@ public class ReunionesController {
     @GetMapping("/reuniones/new")
     public String reunionForm(Model model){
         model.addAttribute("reunion", new Reunion());
-        return "reunionNuevo";
+        return "reunionesNuevo";
     }
 
     @PostMapping("/reuniones/new/save")
     public String reunionGuardar(@ModelAttribute Reunion reunion){
-        reunionRepo.insertarReunion(reunion.getCapacidad(), reunion.getCostoadicional(), reunion.getFecha(), reunion.getHora(), reunion.getDuracion());
+        reunionRepo.insertarReunion(reunion.getCapacidad(), reunion.getCostoadicional(), reunion.getFecha(), reunion.getHora(), reunion.getDuracion(), reunion.getIdservicio());
         return "redirect:/reuniones";
     }
 
@@ -42,13 +42,13 @@ public class ReunionesController {
             model.addAttribute("reunion", reunion);
             return "reunionesEditar";
         } else {
-            return "redirect:/reunion";
+            return "redirect:/reuniones";
         }
     }
 
     @PostMapping("/reuniones/{id}/edit/save")
     public String reunionEditarGuardar(@PathVariable("id") int id, @ModelAttribute Reunion reunion){
-        reunionRepo.actualizarReunion(id, reunion.getCapacidad(), reunion.getCostoadicional(), reunion.getFecha(), reunion.getHora(), reunion.getDuracion());
+        reunionRepo.actualizarReunion(id, reunion.getCapacidad(), reunion.getCostoadicional(), reunion.getFecha(), reunion.getHora(), reunion.getDuracion(), reunion.getIdservicio());
         return "redirect:/reuniones";
     }
 

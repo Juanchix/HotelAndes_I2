@@ -26,12 +26,12 @@ public class ServispasController {
     @GetMapping("/servispas/new")
     public String servispaForm(Model model){
         model.addAttribute("servispa", new Servispa());
-        return "servispaNuevo";
+        return "servispasNuevo";
     }
 
     @PostMapping("/servispas/new/save")
     public String servispaGuardar(@ModelAttribute Servispa servispa){
-        servispaRepo.insertarServispa(servispa.getDuracion(), servispa.getCosto(), servispa.getFecha(), servispa.getSpa());
+        servispaRepo.insertarServispa(servispa.getDuracion(), servispa.getCosto(), servispa.getFecha(), servispa.getIdpa());
         return "redirect:/servispas";
     }
 
@@ -42,13 +42,13 @@ public class ServispasController {
             model.addAttribute("servispa", servispa);
             return "servispasEditar";
         } else {
-            return "redirect:/servispa";
+            return "redirect:/servispas";
         }
     }
 
     @PostMapping("/servispas/{id}/edit/save")
     public String servispaEditarGuardar(@PathVariable("id") int id, @ModelAttribute Servispa servispa){
-        servispaRepo.actualizarServispa(id, servispa.getDuracion(), servispa.getCosto(), servispa.getFecha(), servispa.getSpa());
+        servispaRepo.actualizarServispa(id, servispa.getDuracion(), servispa.getCosto(), servispa.getFecha(), servispa.getIdpa());
         return "redirect:/servispas";
     }
 

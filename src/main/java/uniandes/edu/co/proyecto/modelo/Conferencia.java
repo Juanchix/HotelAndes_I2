@@ -13,22 +13,28 @@ public class Conferencia {
 
     // Atributos
     @Id //PK
-    private Integer idservicio;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idconferencia;
 
     private Integer capacidad;
     private Date fecha;
     private Time hora;
     private Integer duracion;
+    //FK
+    @ManyToOne
+    @JoinColumn(name="idservicio", referencedColumnName = "idservicio")
+    private Servicio idservicio;
 
 
     // Constructor
-    public Conferencia(Integer idservicio,Integer capacidad, Date fecha, Time hora, Integer duracion)
+    public Conferencia(Integer capacidad, Date fecha, Time hora, Integer duracion, Servicio idservicio, Integer idconferencia)
     {
-        this.idservicio = idservicio;
         this.capacidad = capacidad;
         this.fecha = fecha;
         this.hora = hora;
         this.duracion = duracion;
+        this.idservicio = idservicio;
+        this.idconferencia = idconferencia;
     }
 
 
@@ -36,10 +42,6 @@ public class Conferencia {
 
 
     // Getters
-    public Integer getIdservicio(){
-        return idservicio;
-    }
-
     public Integer getCapacidad() {
         return capacidad;
     }
@@ -56,13 +58,16 @@ public class Conferencia {
         return duracion;
     }
 
-
-    // Setters
-    public void setIdservicio(Integer idservicio)
-    {
-        this.idservicio = idservicio;
+    public Servicio getIdservicio(){
+        return idservicio;
     }
 
+    public Integer getIdconferencia(){
+        return idconferencia;
+    }
+
+
+    // Setters
     public void setCapacidad(Integer capacidad) {
         this.capacidad = capacidad;
     }
@@ -79,4 +84,12 @@ public class Conferencia {
         this.duracion = duracion;
     }
 
+    public void setIdservicio(Servicio idservicio){
+        this.idservicio = idservicio;
+    }
+
+    public void setIdconferencia(Integer idconferencia)
+    {
+        this.idconferencia = idconferencia;
+    }
 }

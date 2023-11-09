@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Tipo</title>
+    <link rel="stlyesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+   <form th:action="@{'/tipos/'+${id}+'/edit/save'}" th:object="${tipo}" 
+   metho="post">
+   <div th:replace="~{fragments/tipoForm :: tipoForm(titulo='Editar tipo', tipo=${tipo})}">
+    
+   </div>
+</form>
+</body>
+</html>

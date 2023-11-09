@@ -17,30 +17,29 @@ public interface ServispaRepo extends JpaRepository <Servispa, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO servispas (idservispas, duracion, costo, fecha, spa) VALUES (parranderos_sequence.nextval, :duracion, :costo, :fecha, :spa)", nativeQuery = true)
+    @Query(value = "INSERT INTO servispas (duracion, costo, fecha, idspa, idservispas) VALUES (:duracion, :costo, :fecha, :idspa, parranderos_sequence.nextval)", nativeQuery = true)
     void insertarServispa(@Param("duracion") Integer duracion, @Param("costo") Integer costo, @Param("fecha") Date fecha, 
-                            @Param("spa") Spa spa);
-
+                            @Param("idspa") Spa idspa);
 
     // Read
     @Query(value = "SELECT * FROM servispas", nativeQuery = true)
     Collection<Servispa> darServispas();
 
     @Query(value = "SELECT * FROM servispas WHERE idservispas = :idservispas", nativeQuery = true)
-    Servispa darServispa(@Param("idservispas") Integer idservispas);
+    Servispa darServispa(@Param("idservispas") int idservispas);
 
 
     // Update
     @Modifying
     @Transactional
-    @Query(value = "UPDATE servispas SET duracion=:duracion, costo=:costo, fecha=:fecha, spa=:spa WHERE idservispas=:idservispas", nativeQuery = true)
-    void actualizarServispa(@Param("idservispas") Integer idservispas, @Param("duracion") Integer duracion, @Param("costo") Integer costo, @Param("fecha") Date fecha, 
-                            @Param("spa") Spa spa);
+    @Query(value = "UPDATE servispas SET duracion=:duracion, costo=:costo, fecha=:fecha, idspa=:idspa WHERE idservispas=:idservispas", nativeQuery = true)
+    void actualizarServispa( @Param("idservispas") int idservispas, @Param("duracion") Integer duracion, @Param("costo") Integer costo, @Param("fecha") Date fecha, 
+                            @Param("idspa") Spa idspa);
 
 
     // Delete
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM servispas WHERE idservispas =: idservispas", nativeQuery = true)
-    void eliminarServispa(@Param("idservispas") Integer idservispas);
+    void eliminarServispa(@Param("idservispas") int idservispas);
 }

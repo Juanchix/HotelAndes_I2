@@ -26,12 +26,12 @@ public class AlojamientosController {
     @GetMapping("/alojamientos/new")
     public String alojamientoForm(Model model){
         model.addAttribute("alojamiento", new Alojamiento());
-        return "alojamientoNuevo";
+        return "alojamientosNuevo";
     }
 
     @PostMapping("/alojamientos/new/save")
     public String alojamientoGuardar(@ModelAttribute Alojamiento alojamiento){
-        alojamientoRepo.insertarAlojamiento(alojamiento.getActiva(), alojamiento.getCheckin(), alojamiento.getCheckout(), alojamiento.getAcompanantes(), alojamiento.getPlan());
+        alojamientoRepo.insertarAlojamiento(alojamiento.getActiva(), alojamiento.getCheckin(), alojamiento.getCheckout(), alojamiento.getAcompanantes(), alojamiento.getIdplan());
         return "redirect:/alojamientos";
     }
 
@@ -42,13 +42,13 @@ public class AlojamientosController {
             model.addAttribute("alojamiento", alojamiento);
             return "alojamientosEditar";
         } else {
-            return "redirect:/alojamiento";
+            return "redirect:/alojamientos";
         }
     }
 
     @PostMapping("/alojamientos/{id}/edit/save")
     public String alojamientoEditarGuardar(@PathVariable("id") int id, @ModelAttribute Alojamiento alojamiento){
-        alojamientoRepo.actualizarAlojamiento(id, alojamiento.getActiva(), alojamiento.getCheckin(), alojamiento.getCheckout(), alojamiento.getAcompanantes(), alojamiento.getPlan());
+        alojamientoRepo.actualizarAlojamiento(id, alojamiento.getActiva(), alojamiento.getCheckin(), alojamiento.getCheckout(), alojamiento.getAcompanantes(), alojamiento.getIdplan());
         return "redirect:/alojamientos";
     }
 

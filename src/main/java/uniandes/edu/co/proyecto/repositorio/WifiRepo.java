@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import uniandes.edu.co.proyecto.modelo.Servicio;
 import uniandes.edu.co.proyecto.modelo.Wifi;
 
 public interface WifiRepo extends JpaRepository <Wifi, Integer> {
@@ -15,28 +16,28 @@ public interface WifiRepo extends JpaRepository <Wifi, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO wifis (idservicio, anchobanda) VALUES (parranderos_sequence.nextval, :anchobanda)", nativeQuery = true)
-    void insertarWifi(@Param("anchobanda") Integer anchobanda);
+    @Query(value = "INSERT INTO wifis (anchobanda, idservicio, idwifi) VALUES (:anchobanda, :idservicio, parranderos_sequence.nextval)", nativeQuery = true)
+    void insertarWifi(@Param("anchobanda") Integer anchobanda, @Param("idservicio") Servicio idservicio);
 
 
     // Read
     @Query(value = "SELECT * FROM wifis", nativeQuery = true)
     Collection<Wifi> darWifis();
 
-    @Query(value = "SELECT * FROM wifis WHERE idservicio = :idservicio", nativeQuery = true)
-    Wifi darWifi(@Param("idservicio") int idservicio);
+    @Query(value = "SELECT * FROM wifis WHERE idwifi = :idwifi", nativeQuery = true)
+    Wifi darWifi(@Param("idwifi") int idwifi);
 
 
     // Update
     @Modifying
     @Transactional
-    @Query(value = "UPDATE wifis SET anchobanda=:anchobanda WHERE idservicio=:idservicio", nativeQuery = true)
-    void actualizarWifi(@Param("idservicio") Integer idservicio, @Param("anchobanda") Integer anchobanda);
+    @Query(value = "UPDATE wifis SET anchobanda=:anchobanda, idservicio =:idservicio WHERE idwifi=:idwifi", nativeQuery = true)
+    void actualizarWifi(@Param("idwifi") int idwifi, @Param("anchobanda") Integer anchobanda, @Param("idservicio") Servicio idservicio);
 
 
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM wifis WHERE idservicio =: idservicio", nativeQuery = true)
-    void eliminarWifi(@Param("idservicio") Integer idservicio);
+    @Query(value = "DELETE FROM wifis WHERE idwifi =: idwifi", nativeQuery = true)
+    void eliminarWifi(@Param("idwifi") int idwifi);
 }

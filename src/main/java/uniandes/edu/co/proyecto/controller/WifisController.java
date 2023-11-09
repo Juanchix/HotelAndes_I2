@@ -26,12 +26,12 @@ public class WifisController {
     @GetMapping("/wifis/new")
     public String wifiForm(Model model){
         model.addAttribute("wifi", new Wifi());
-        return "wifiNuevo";
+        return "wifisNuevo";
     }
 
     @PostMapping("/wifis/new/save")
     public String wifiGuardar(@ModelAttribute Wifi wifi){
-        wifiRepo.insertarWifi(wifi.getAnchobanda());
+        wifiRepo.insertarWifi(wifi.getAnchobanda(), wifi.getIdservicio());
         return "redirect:/wifis";
     }
 
@@ -42,13 +42,13 @@ public class WifisController {
             model.addAttribute("wifi", wifi);
             return "wifisEditar";
         } else {
-            return "redirect:/wifi";
+            return "redirect:/wifis";
         }
     }
 
     @PostMapping("/wifis/{id}/edit/save")
     public String wifiEditarGuardar(@PathVariable("id") int id, @ModelAttribute Wifi wifi){
-        wifiRepo.actualizarWifi(id, wifi.getAnchobanda());
+        wifiRepo.actualizarWifi(id, wifi.getAnchobanda(), wifi.getIdservicio());
         return "redirect:/wifis";
     }
 

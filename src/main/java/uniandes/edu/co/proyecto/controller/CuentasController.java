@@ -26,12 +26,12 @@ public class CuentasController {
     @GetMapping("/cuentas/new")
     public String cuentaForm(Model model){
         model.addAttribute("cuenta", new Cuenta());
-        return "cuentaNuevo";
+        return "cuentasNuevo";
     }
 
     @PostMapping("/cuentas/new/save")
     public String cuentaGuardar(@ModelAttribute Cuenta cuenta){
-        cuentaRepo.insertarCuenta(cuenta.getNetocuenta(), cuenta.getAlojamiento());
+        cuentaRepo.insertarCuenta(cuenta.getNetocuenta(), cuenta.getIdalojamiento());
         return "redirect:/cuentas";
     }
 
@@ -42,13 +42,13 @@ public class CuentasController {
             model.addAttribute("cuenta", cuenta);
             return "cuentasEditar";
         } else {
-            return "redirect:/cuenta";
+            return "redirect:/cuentas";
         }
     }
 
     @PostMapping("/cuentas/{id}/edit/save")
     public String cuentaEditarGuardar(@PathVariable("id") int id, @ModelAttribute Cuenta cuenta){
-        cuentaRepo.actualizarCuenta(id, cuenta.getNetocuenta(), cuenta.getAlojamiento());
+        cuentaRepo.actualizarCuenta(id, cuenta.getNetocuenta(), cuenta.getIdalojamiento());
         return "redirect:/cuentas";
     }
 

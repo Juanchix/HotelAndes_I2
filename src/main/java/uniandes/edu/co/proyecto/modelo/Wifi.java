@@ -4,22 +4,28 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table(name="internet")
+@Table(name="wifis")
 
 public class Wifi {
 
     // Atributos
     @Id //PK
-    private Integer idservicio;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idwifi;
 
     private Integer anchobanda;
+    //FK
+    @ManyToOne
+    @JoinColumn(name="idservicio", referencedColumnName = "idservicio")
+    private Servicio idservicio;
     
 
     // Constructor
-    public Wifi(Integer idservicio, Integer anchobanda)
+    public Wifi(Integer anchobanda, Servicio idservicio, Integer idwifi)
     {
-        this.idservicio = idservicio;
         this.anchobanda = anchobanda;
+        this.idservicio = idservicio;
+        this.idwifi = idwifi;
     }
 
 
@@ -27,23 +33,28 @@ public class Wifi {
 
 
     // Getters
-    public Integer getIdservicio(){
-        return idservicio;
-    }
-
     public Integer getAnchobanda() {
         return anchobanda;
     }
 
-
-    // Setters
-    public void setIdservicio(Integer idservicio)
-    {
-        this.idservicio = idservicio;
+    public Servicio getIdservicio(){
+        return idservicio;
     }
 
+    public Integer getIdwifi(){
+        return idwifi;
+    }
+
+    // Setters
     public void setAnchobanda(Integer anchobanda) {
         this.anchobanda = anchobanda;
     }
 
+    public void setIdservicio(Servicio idservicio) {
+        this.idservicio = idservicio;
+    }
+
+    public void setIdwifi(Integer idwifi) {
+        this.idwifi = idwifi;
+    }
 }
