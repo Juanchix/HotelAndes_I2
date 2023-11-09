@@ -174,6 +174,9 @@ HAVING
   OR SUM(NVL(c.netocuenta, 0)) > 15000000;
 
   --REQUERIMIENTO 8:
+  CREATE INDEX idx_horareserva ON reservas (horareserva) INDEXTYPE IS btree;
+  CREATE INDEX idx_idservicio_reservas ON reservas (idservicio) INDEXTYPE IS btree;
+
   SELECT s.idservicio,
        COUNT(r.idreserva) AS cantidad_solicitudes,
        TO_CHAR(r.horareserva, 'IW') AS semana_iso,
