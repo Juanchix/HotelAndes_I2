@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Planes</title>
+    <link rel="stlyesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div>
+        <h1>Lista de Planes</h1>
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Tipo de plan</th>
+                    <th>Descuento</th>
+                </tr>
+            </thead>
+            <th:block th:each="plan:${planes}">
+                <tr>
+                    <td th:text="${plan.idplan}"></td>
+                    <td th:text="${plan.tipoplan}"></td>
+                    <td th:text="${plan.descuento}"></td>
+                    <td>
+                        <a th:href="@{planes/{id}/edit(id=${plan.idplan})}">
+                            Editar
+                        </a>
+                        <a th:href="@{planes/{id}/delete(id=${plan.idplan})}"
+                        onclick="return confirm('¿Estás seguro de borrar este plan?')">
+                            Borrar
+                        </a>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+        <div>
+            <a th:href="@{/}" class="btn btn-primary">Volver Atrás</a>
+            <a th:href="@{planes/new}" class="btn btn-primary">Añadir Plan</a>
+        </div>
+    </div>
+</body>
+</html>
