@@ -83,8 +83,6 @@ CREATE TABLE lavados (
     idlavado   NUMBER NOT NULL
 );
 
-ALTER TABLE lavados
-    ADD CHECK ( prendas IN ( no, si ) );
 
 ALTER TABLE lavados ADD CONSTRAINT lavados_pk PRIMARY KEY ( idlavado );
 
