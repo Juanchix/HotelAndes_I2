@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Hotel Andes</title>
+ <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+ <style>
+     body {
+         background-color: #f0f0f0;
+         color: #333;
+         padding: 20px;
+         font-family: "Times New Roman", Times, serif;
+     }
+     h1 {
+         text-align: center;
+         font-size: 2em;
+     }
+     .container {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+     }
+     .btn-primary {
+         background-color: #667fd1; 
+         border: none; 
+         color: white; 
+         padding: 15px 32px; 
+         text-align: center; 
+         text-decoration: none;
+         display: inline-block;
+         font-size: 16px;
+         margin: 4px 2px;
+         cursor: pointer;
+         transition-duration: 0.4s; 
+         border-radius: 12px;
+     }
+     .btn-primary:hover {
+         background-color: white; 
+         color: black; 
+     }
+     img {
+         margin-bottom: 45px; 
+     }
+ </style>
+</head>
+<body>
+ <div class="container mx-auto w-25">
+     <h1>Hotel Andes</h1>
+     <img th:src="@{/images/logo.png}" width="250"/>
+     <div>
+         <a th:href="@{/habitaciones}" class="btn-primary">Habitaciones</a>
+         <a th:href="@{/usuarios}" class="btn-primary">Usuarios</a>
+         <a th:href="@{/servicios}" class="btn-primary">Servicios</a>
+         <a th:href="@{/planes}" class="btn-primary">Planes</a>
+         <a th:href="@{/reservas}" class="btn-primary">Reservas</a>
+         <a th:href="@{/tipos}" class="btn-primary">Tipos de Habitaciones</a>
+     </div>
+ </div>
+</body>
+</html>
