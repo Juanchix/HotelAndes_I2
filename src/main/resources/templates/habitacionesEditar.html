@@ -7,7 +7,7 @@
     <link rel="stlyesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
 
 </head>
-<body>
+<body>6
    <form th:action="@{'/habitaciones/'+${id}+'/edit/save'}" th:object="${habitacion}" method="post">
         <div th:replace="~{fragments/habitacionForm :: habitacionForm(titulo='Editar habitacion', habitacion=${habitacion})}"></div>
     </form>
