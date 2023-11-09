@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import uniandes.edu.co.proyecto.modelo.Alojamiento;
 import uniandes.edu.co.proyecto.modelo.Usuario;
 
 public interface UsuarioRepo extends JpaRepository <Usuario, Integer> {
