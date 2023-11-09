@@ -9,34 +9,34 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import uniandes.edu.co.proyecto.modelo.Restaurante;
+import uniandes.edu.co.proyecto.modelo.Servicio;
 
 public interface RestauranteRepo extends JpaRepository <Restaurante, Integer> {
 
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO restaurantes (estilo, idservicio) VALUES (:estilo, parranderos_sequence.nextval)", nativeQuery = true)
-    void insertarRestaurante(@Param("estilo") String estilo);
-
+    @Query(value = "INSERT INTO restaurantes (estilo, idservicio, idrestaurante) VALUES (:estilo, :idservicio, parranderos_sequence.nextval)", nativeQuery = true)
+    void insertarRestaurante(@Param("estilo") String estilo, @Param("idservicio") Servicio idServicio);
 
     // Read
     @Query(value = "SELECT * FROM restaurantes", nativeQuery = true)
     Collection<Restaurante> darRestaurantes();
 
-    @Query(value = "SELECT * FROM restaurantes WHERE idservicio = :idservicio", nativeQuery = true)
-    Restaurante darRestaurante(@Param("idservicio") int idservicio);
+    @Query(value = "SELECT * FROM restaurantes WHERE idrestaurante = :idrestaurante", nativeQuery = true)
+    Restaurante darRestaurante(@Param("idrestaurante") int idrestaurante);
 
 
     // Update
     @Modifying
     @Transactional
-    @Query(value = "UPDATE restaurantes SET estilo=:estilo WHERE idservicio=:idservicio", nativeQuery = true)
-    void actualizarRestaurante(@Param("idservicio") int idservicio, @Param("estilo") String estilo);
+    @Query(value = "UPDATE restaurantes SET estilo=:estilo, idservicio =:idservicio WHERE idrestaurante=:idrestaurante", nativeQuery = true)
+    void actualizarRestaurante(@Param("idrestaurante") int idrestaurante, @Param("estilo") String estilo, @Param("idservicio") Servicio idServicio);
 
 
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM restaurantes WHERE idservicio =: idservicio", nativeQuery = true)
-    void eliminarRestaurante(@Param("idservicio") int idservicio);
+    @Query(value = "DELETE FROM restaurantes WHERE idrestaurante =: idrestaurante", nativeQuery = true)
+    void eliminarRestaurante(@Param("idrestaurante") int idrestaurante);
 }

@@ -10,16 +10,23 @@ public class Tienda {
 
     // Atributos
     @Id //PK
-    private Integer idservicio;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idtienda;
 
     private String tipo;
+    //FK
+    @ManyToOne
+    @JoinColumn(name="idservicio", referencedColumnName = "idservicio")
+    private Servicio idservicio;
+
     
 
     // Constructor
-    public Tienda(Integer idservicio, String tipo)
+    public Tienda(String tipo, Servicio idservicio, Integer idtienda)
     {
-        this.idservicio = idservicio;
         this.tipo = tipo;
+        this.idservicio = idservicio;
+        this.idtienda = idtienda;
     }
 
 
@@ -27,25 +34,33 @@ public class Tienda {
 
 
     // Getters
-    public Integer getIdservicio(){
-        return idservicio;
-    }
-
     public String getTipo()
     {
         return this.tipo;
     }
 
+    public Servicio getIdservicio(){
+        return idservicio;
+    }
+
+    public Integer getIdtienda(){
+        return idtienda;
+    }
 
     // Setters
-    public void setIdservicio(Integer idservicio)
+    public void setTipo(String tipo)
+    {
+        this.tipo = tipo;
+    }
+
+    public void setIdservicio(Servicio idservicio)
     {
         this.idservicio = idservicio;
     }
 
-    public void setTipo(String tipo)
+    public void setIdtienda(Integer idtienda)
     {
-        this.tipo = tipo;
+        this.idtienda = idtienda;
     }
 
 }

@@ -31,7 +31,7 @@ public class TiendasController {
 
     @PostMapping("/tiendas/new/save")
     public String tiendaGuardar(@ModelAttribute Tienda tienda){
-        tiendaRepo.insertarTienda(tienda.getTipo());
+        tiendaRepo.insertarTienda(tienda.getTipo(), tienda.getIdservicio());
         return "redirect:/tiendas";
     }
 
@@ -48,7 +48,7 @@ public class TiendasController {
 
     @PostMapping("/tiendas/{id}/edit/save")
     public String tiendaEditarGuardar(@PathVariable("id") int id, @ModelAttribute Tienda tienda){
-        tiendaRepo.actualizarTienda(id, tienda.getTipo());
+        tiendaRepo.actualizarTienda(id, tienda.getTipo(), tienda.getIdservicio());
         return "redirect:/tiendas";
     }
 

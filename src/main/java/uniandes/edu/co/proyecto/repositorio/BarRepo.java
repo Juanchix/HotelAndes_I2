@@ -9,34 +9,35 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import uniandes.edu.co.proyecto.modelo.Bar;
+import uniandes.edu.co.proyecto.modelo.Servicio;
 
 public interface BarRepo extends JpaRepository <Bar, Integer> {
 
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO bares (estilo, idservicio) VALUES (:estilo, parranderos_sequence.nextval)", nativeQuery = true)
-    void insertarBar(@Param("estilo") String estilo);
+    @Query(value = "INSERT INTO bares (estilo, idservicio, idbar) VALUES (:estilo, :idservico, parranderos_sequence.nextval)", nativeQuery = true)
+    void insertarBar(@Param("estilo") String estilo, @Param("idservicio") Servicio idServicio);
 
 
     // Read
     @Query(value = "SELECT * FROM bares", nativeQuery = true)
     Collection<Bar> darBares();
 
-    @Query(value = "SELECT * FROM bares WHERE idservicio = :idservicio", nativeQuery = true)
-    Bar darBar(@Param("idservicio") int idservicio);
+    @Query(value = "SELECT * FROM bares WHERE idbar = :idbar", nativeQuery = true)
+    Bar darBar(@Param("idbar") int idbar);
 
 
     // Update
     @Modifying
     @Transactional
-    @Query(value = "UPDATE bares SET estilo=:estilo WHERE idservicio=:idservicio", nativeQuery = true)
-    void actualizarBar(@Param("idservicio") int idservicio, @Param("estilo") String estilo);
+    @Query(value = "UPDATE bares SET estilo=:estilo, idservicio =:idservicio WHERE idbar=:idbar", nativeQuery = true)
+    void actualizarBar(@Param("idbar") int idbar, @Param("estilo") String estilo, @Param("idservicio") Servicio idServicio);
 
 
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM bares WHERE idservicio =: idservicio", nativeQuery = true)
-    void eliminarBar(@Param("idservicio") int idservicio);
+    @Query(value = "DELETE FROM bares WHERE idbar =: idbar", nativeQuery = true)
+    void eliminarBar(@Param("idbar") int idbar);
 }

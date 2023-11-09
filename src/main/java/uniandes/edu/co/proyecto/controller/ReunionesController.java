@@ -31,7 +31,7 @@ public class ReunionesController {
 
     @PostMapping("/reuniones/new/save")
     public String reunionGuardar(@ModelAttribute Reunion reunion){
-        reunionRepo.insertarReunion(reunion.getCapacidad(), reunion.getCostoadicional(), reunion.getFecha(), reunion.getHora(), reunion.getDuracion());
+        reunionRepo.insertarReunion(reunion.getCapacidad(), reunion.getCostoadicional(), reunion.getFecha(), reunion.getHora(), reunion.getDuracion(), reunion.getIdservicio());
         return "redirect:/reuniones";
     }
 
@@ -48,7 +48,7 @@ public class ReunionesController {
 
     @PostMapping("/reuniones/{id}/edit/save")
     public String reunionEditarGuardar(@PathVariable("id") int id, @ModelAttribute Reunion reunion){
-        reunionRepo.actualizarReunion(id, reunion.getCapacidad(), reunion.getCostoadicional(), reunion.getFecha(), reunion.getHora(), reunion.getDuracion());
+        reunionRepo.actualizarReunion(id, reunion.getCapacidad(), reunion.getCostoadicional(), reunion.getFecha(), reunion.getHora(), reunion.getDuracion(), reunion.getIdservicio());
         return "redirect:/reuniones";
     }
 

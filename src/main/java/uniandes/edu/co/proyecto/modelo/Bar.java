@@ -10,16 +10,22 @@ public class Bar {
 
     // Atributos
     @Id //PK
-    private Integer idservicio;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idbar;
 
     private String estilo;
+    //FK
+    @ManyToOne
+    @JoinColumn(name="idservicio", referencedColumnName = "idservicio")
+    private Servicio idservicio;
 
 
     // Constructor
-    public Bar(Integer idservicio, String estilo)
+    public Bar(String estilo, Servicio idservicio, Integer idbar)
     {
-        this.idservicio = idservicio;
         this.estilo = estilo;
+        this.idservicio = idservicio;
+        this.idbar = idbar;
     }
 
 
@@ -27,25 +33,34 @@ public class Bar {
 
 
     // Getters
-    public Integer getIdservicio(){
-        return idservicio;
-    }
-
     public String getEstilo()
     {
         return this.estilo;
     }
 
+    public Servicio getIdservicio(){
+        return idservicio;
+    }
+
+    public Integer getIdbar(){
+        return idbar;
+    }
+
 
     // Setters
-    public void setIdservicio(Integer idservicio)
-    {
-        this.idservicio = idservicio;
-    }
-    
     public void setEstilo(String estilo)
     {
         this.estilo = estilo;
+    }
+
+    public void setIdservicio(Servicio idservicio)
+    {
+        this.idservicio = idservicio;
+    }
+
+    public void setIdbar(Integer idbar)
+    {
+        this.idbar = idbar;
     }
 
 }

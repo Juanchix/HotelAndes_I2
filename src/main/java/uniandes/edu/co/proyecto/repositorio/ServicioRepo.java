@@ -17,8 +17,8 @@ public interface ServicioRepo extends JpaRepository <Servicio, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO servicios (horarioinicio, horariofin, costo, cargado, existe, idservicio, idreserva) VALUES (:horarioinicio, :horariofin, :costo, :cargado, :existe, :idservicio, :idreserva)", nativeQuery = true)
-    void insertarServicio(@Param("horarioinicio") Time horarioinicio, @Param("horariofin") Time horariofin, @Param("costo") Integer costo, 
+    @Query(value = "INSERT INTO servicios (horarioinicial, horariofinal, costo, cargado, existe, idservicio, idreserva) VALUES (:horarioinicial, :horariofinal, :costo, :cargado, :existe, :idservicio, :idreserva)", nativeQuery = true)
+    void insertarServicio(@Param("horarioinicial") Time horarioinicial, @Param("horariofinal") Time horariofinal, @Param("costo") Integer costo, 
                             @Param("cargado") String cargado, @Param("existe") String existe, @Param("idreserva") Reserva idreserva);
 
 
@@ -33,8 +33,8 @@ public interface ServicioRepo extends JpaRepository <Servicio, Integer> {
     // Update
     @Modifying
     @Transactional
-    @Query(value = "UPDATE servicios SET horarioinicio=:horarioinicio, horariofin=:horariofin, costo=:costo, cargado=:cargado, existe=:existe, idreserva=:idreserva WHERE idservicio=:idservicio", nativeQuery = true)
-    void actualizarServicio( @Param("idservicio") int idservicio, @Param("horarioinicio") Time horarioinicio, @Param("horariofin") Time horariofin, @Param("costo") Integer costo, 
+    @Query(value = "UPDATE servicios SET horarioinicial=:horarioinicial, horariofinal=:horariofinal, costo=:costo, cargado=:cargado, existe=:existe, idreserva=:idreserva WHERE idservicio=:idservicio", nativeQuery = true)
+    void actualizarServicio( @Param("idservicio") int idservicio, @Param("horarioinicial") Time horarioinicial, @Param("horariofinal") Time horariofinal, @Param("costo") Integer costo, 
                             @Param("cargado") String cargado, @Param("existe") String existe, @Param("idreserva") Reserva idreserva);
 
     // Delete

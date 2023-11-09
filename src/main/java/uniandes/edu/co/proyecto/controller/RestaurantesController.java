@@ -31,7 +31,7 @@ public class RestaurantesController {
 
     @PostMapping("/restaurantes/new/save")
     public String restauranteGuardar(@ModelAttribute Restaurante restaurante){
-        restauranteRepo.insertarRestaurante(restaurante.getEstilo());
+        restauranteRepo.insertarRestaurante(restaurante.getEstilo(), restaurante.getIdservicio());
         return "redirect:/restaurantes";
     }
 
@@ -48,7 +48,7 @@ public class RestaurantesController {
 
     @PostMapping("/restaurantes/{id}/edit/save")
     public String restauranteEditarGuardar(@PathVariable("id") int id, @ModelAttribute Restaurante restaurante){
-        restauranteRepo.actualizarRestaurante(id, restaurante.getEstilo());
+        restauranteRepo.actualizarRestaurante(id, restaurante.getEstilo(), restaurante.getIdservicio());
         return "redirect:/restaurantes";
     }
 

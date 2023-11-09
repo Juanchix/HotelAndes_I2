@@ -31,7 +31,7 @@ public class SpasController {
 
     @PostMapping("/spas/new/save")
     public String spaGuardar(@ModelAttribute Spa spa){
-        spaRepo.insertarSpa(spa.getCapacidad());
+        spaRepo.insertarSpa(spa.getCapacidad(), spa.getIdservicio());
         return "redirect:/spas";
     }
 
@@ -48,7 +48,7 @@ public class SpasController {
 
     @PostMapping("/spas/{id}/edit/save")
     public String spaEditarGuardar(@PathVariable("id") int id, @ModelAttribute Spa spa){
-        spaRepo.actualizarSpa(id, spa.getCapacidad());
+        spaRepo.actualizarSpa(id, spa.getCapacidad(), spa.getIdservicio());
         return "redirect:/spas";
     }
 

@@ -6,20 +6,26 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="restaurantes")
 
-public class Restaurante extends Servicio{
+public class Restaurante{
 
     // Atributos
     @Id //PK
-    private Integer idservicio;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idrestaurante;
 
     private String estilo;
+    //FK
+    @ManyToOne
+    @JoinColumn(name="idservicio", referencedColumnName = "idservicio")
+    private Servicio idservicio;
 
 
     // Constructor
-    public Restaurante(Integer idservicio, String estilo)
+    public Restaurante(String estilo, Servicio idservicio, Integer idrestaurante)
     {
-        this.idservicio = idservicio;
         this.estilo = estilo;
+        this.idservicio = idservicio;
+        this.idrestaurante = idrestaurante;
     }
 
 
@@ -27,25 +33,33 @@ public class Restaurante extends Servicio{
 
 
     // Getters
-    public Integer getIdservicio(){
-        return idservicio;
-    }
-
     public String getEstilo()
     {
         return this.estilo;
     }
 
+    public Servicio getIdservicio(){
+        return idservicio;
+    }   
+
+    public Integer getIdrestaurante(){
+        return idrestaurante;
+    }
 
     // Setters
-    public void setIdservicio(Integer idservicio)
+    public void setEstilo(String estilo)
+    {
+        this.estilo = estilo;
+    }
+
+    public void setIdservicio(Servicio idservicio)
     {
         this.idservicio = idservicio;
     }
 
-    public void setEstilo(String estilo)
+    public void setIdrestaurante(Integer idrestaurante)
     {
-        this.estilo = estilo;
+        this.idrestaurante = idrestaurante;
     }
     
 }

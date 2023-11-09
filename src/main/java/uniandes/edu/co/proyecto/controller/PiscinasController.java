@@ -31,7 +31,7 @@ public class PiscinasController {
 
     @PostMapping("/piscinas/new/save")
     public String piscinaGuardar(@ModelAttribute Piscina piscina){
-        piscinaRepo.insertarPiscina(piscina.getCapacidad(), piscina.getProfundidad());
+        piscinaRepo.insertarPiscina(piscina.getCapacidad(), piscina.getProfundidad(), piscina.getIdservicio());
         return "redirect:/piscinas";
     }
 
@@ -48,7 +48,7 @@ public class PiscinasController {
 
     @PostMapping("/piscinas/{id}/edit/save")
     public String piscinaEditarGuardar(@PathVariable("id") int id, @ModelAttribute Piscina piscina){
-        piscinaRepo.actualizarPiscina(id, piscina.getCapacidad(), piscina.getProfundidad());
+        piscinaRepo.actualizarPiscina(id, piscina.getCapacidad(), piscina.getProfundidad(), piscina.getIdservicio());
         return "redirect:/piscinas";
     }
 

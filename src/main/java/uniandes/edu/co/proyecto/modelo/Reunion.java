@@ -13,24 +13,31 @@ public class Reunion {
 
     // Atributos
     @Id //PK
-    private Integer idservicio;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idreunion;
 
     private Integer capacidad;
     private Integer costoadicional;
     private Date fecha;
     private Time hora;
     private Integer duracion;
+    //FK
+    @ManyToOne
+    @JoinColumn(name="idservicio", referencedColumnName = "idservicio")
+    private Servicio idservicio;
+
 
 
     // Constructor
-    public Reunion(Integer idservicio, Integer capacidad, Integer costoadicional, Date fecha, Time hora, Integer duracion)
+    public Reunion(Integer capacidad, Integer costoadicional, Date fecha, Time hora, Integer duracion, Servicio idservicio, Integer idreunion)
     {
-        this.idservicio = idservicio;
         this.capacidad = capacidad;
         this.costoadicional = costoadicional;
         this.fecha = fecha;
         this.hora = hora;
         this.duracion = duracion;
+        this.idservicio = idservicio;
+        this.idreunion = idreunion;
     }
 
 
@@ -38,10 +45,6 @@ public class Reunion {
 
 
     // Getters
-    public Integer getIdservicio(){
-        return idservicio;
-    }
-
     public Integer getCapacidad() {
         return capacidad;
     }
@@ -62,13 +65,15 @@ public class Reunion {
         return duracion;
     }
 
-
-    // Setters
-    public void setIdservicio(Integer idservicio)
-    {
-        this.idservicio = idservicio;
+    public Servicio getIdservicio(){
+        return idservicio;
     }
 
+    public Integer getIdreunion(){
+        return idreunion;
+    }
+
+    // Setters
     public void setCapacidad(Integer capacidad) {
         this.capacidad = capacidad;
     }
@@ -87,6 +92,16 @@ public class Reunion {
 
     public void setDuracion(Integer duracion) {
         this.duracion = duracion;
+    }
+
+    public void setIdservicio(Servicio idservicio)
+    {
+        this.idservicio = idservicio;
+    }
+
+    public void setIdreunion(Integer idreunion)
+    {
+        this.idreunion = idreunion;
     }
 
 }

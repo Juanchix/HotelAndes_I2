@@ -10,20 +10,26 @@ public class Lavado {
 
     // Atributos
     @Id //PK
-    private Integer idservicio;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idlavado;
 
     private Integer prendas;
     private String tipo;
     private Integer zapatos;
+    //FK
+    @ManyToOne
+    @JoinColumn(name="idservicio", referencedColumnName = "idservicio")
+    private Servicio idservicio;
 
 
     // Constructor
-    public Lavado(Integer idservicio, Integer prendas, String tipo, Integer zapatos)
+    public Lavado(Integer prendas, String tipo, Integer zapatos, Servicio idservicio, Integer idlavado)
     {
-        this.idservicio = idservicio;
         this.prendas = prendas;
         this.tipo = tipo;
         this.zapatos = zapatos;
+        this.idservicio = idservicio;
+        this.idlavado = idlavado;
     }
 
 
@@ -31,10 +37,6 @@ public class Lavado {
 
 
     // Getters
-    public Integer getIdservicio(){
-        return idservicio;
-    }
-
     public Integer getPrendas() {
         return prendas;
     }
@@ -47,13 +49,16 @@ public class Lavado {
         return zapatos;
     }
 
-
-    // Setters
-    public void setIdservicio(Integer idservicio)
-    {
-        this.idservicio = idservicio;
+    public Servicio getIdservicio(){
+        return idservicio;
     }
 
+    public Integer getIdlavado(){
+        return idlavado;
+    }
+
+
+    // Setters
     public void setPrendas(Integer prendas) {
         this.prendas = prendas;
     }
@@ -66,4 +71,13 @@ public class Lavado {
         this.zapatos = zapatos;
     }
     
+    public void setIdservicio(Servicio idservicio)
+    {
+        this.idservicio = idservicio;
+    }
+
+    public void setIdlavado(Integer idlavado)
+    {
+        this.idlavado = idlavado;
+    }
 }

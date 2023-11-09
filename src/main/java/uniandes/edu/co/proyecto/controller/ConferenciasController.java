@@ -31,7 +31,7 @@ public class ConferenciasController {
 
     @PostMapping("/conferencias/new/save")
     public String conferenciaGuardar(@ModelAttribute Conferencia conferencia){
-        conferenciaRepo.insertarConferencia(conferencia.getCapacidad(), conferencia.getFecha(), conferencia.getHora(), conferencia.getDuracion());
+        conferenciaRepo.insertarConferencia(conferencia.getCapacidad(), conferencia.getFecha(), conferencia.getHora(), conferencia.getDuracion(), conferencia.getIdservicio());
         return "redirect:/conferencias";
     }
 
@@ -48,7 +48,7 @@ public class ConferenciasController {
 
     @PostMapping("/conferencias/{id}/edit/save")
     public String conferenciaEditarGuardar(@PathVariable("id") int id, @ModelAttribute Conferencia conferencia){
-        conferenciaRepo.actualizarConferencia(id, conferencia.getCapacidad(), conferencia.getFecha(), conferencia.getHora(), conferencia.getDuracion());
+        conferenciaRepo.actualizarConferencia(id, conferencia.getCapacidad(), conferencia.getFecha(), conferencia.getHora(), conferencia.getDuracion(), conferencia.getIdservicio());
         return "redirect:/conferencias";
     }
 

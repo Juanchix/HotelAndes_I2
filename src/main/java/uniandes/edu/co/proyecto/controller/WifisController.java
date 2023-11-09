@@ -31,7 +31,7 @@ public class WifisController {
 
     @PostMapping("/wifis/new/save")
     public String wifiGuardar(@ModelAttribute Wifi wifi){
-        wifiRepo.insertarWifi(wifi.getAnchobanda());
+        wifiRepo.insertarWifi(wifi.getAnchobanda(), wifi.getIdservicio());
         return "redirect:/wifis";
     }
 
@@ -48,7 +48,7 @@ public class WifisController {
 
     @PostMapping("/wifis/{id}/edit/save")
     public String wifiEditarGuardar(@PathVariable("id") int id, @ModelAttribute Wifi wifi){
-        wifiRepo.actualizarWifi(id, wifi.getAnchobanda());
+        wifiRepo.actualizarWifi(id, wifi.getAnchobanda(), wifi.getIdservicio());
         return "redirect:/wifis";
     }
 

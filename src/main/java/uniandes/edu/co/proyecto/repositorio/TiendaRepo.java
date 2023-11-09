@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import uniandes.edu.co.proyecto.modelo.Servicio;
 import uniandes.edu.co.proyecto.modelo.Tienda;
 
 public interface TiendaRepo extends JpaRepository <Tienda, Integer> {
@@ -16,28 +16,28 @@ public interface TiendaRepo extends JpaRepository <Tienda, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO tiendas (tipo, idservicio) VALUES (:tipo, parranderos_sequence.nextval)", nativeQuery = true)
-    void insertarTienda(@Param("tipo") String tipo);
+    @Query(value = "INSERT INTO tiendas (tipo, idservicio, idtienda) VALUES (:tipo, :idservicio, parranderos_sequence.nextval)", nativeQuery = true)
+    void insertarTienda(@Param("tipo") String tipo, @Param("idservicio") Servicio idservicio);
 
 
     // Read
     @Query(value = "SELECT * FROM tiendas", nativeQuery = true)
     Collection<Tienda> darTiendas();
 
-    @Query(value = "SELECT * FROM tiendas WHERE idservicio = :idservicio", nativeQuery = true)
-    Tienda darTienda(@Param("idservicio") int idservicio);
+    @Query(value = "SELECT * FROM tiendas WHERE idtienda = :idtienda", nativeQuery = true)
+    Tienda darTienda(@Param("idtienda") int idtienda);
 
 
     // Update
     @Modifying
     @Transactional
-    @Query(value = "UPDATE tiendas SET tipo=:tipo WHERE idservicio=:idservicio", nativeQuery = true)
-    void actualizarTienda(@Param("idservicio") int idservicio, @Param("tipo") String tipo);
+    @Query(value = "UPDATE tiendas SET tipo=:tipo, idservicio =:idservicio WHERE idtienda=:idtienda", nativeQuery = true)
+    void actualizarTienda(@Param("idtienda") int idtienda, @Param("tipo") String tipo, @Param("idservicio") Servicio idservicio);
 
 
     // Delete
     @Modifying
     @Transactional
-    @Query(value = "DELETE FROM tiendas WHERE idservicio =: idservicio", nativeQuery = true)
-    void eliminarTienda(@Param("idservicio") int idservicio);
+    @Query(value = "DELETE FROM tiendas WHERE idtienda =: idtienda", nativeQuery = true)
+    void eliminarTienda(@Param("idtienda") int idtienda);
 }
