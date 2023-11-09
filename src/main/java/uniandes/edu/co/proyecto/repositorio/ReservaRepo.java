@@ -17,8 +17,8 @@ public interface ReservaRepo extends JpaRepository <Reserva, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO reservas (idreserva, horareserva, cuenta) VALUES (parranderos_sequence.nextval, :horareserva, :cuenta)", nativeQuery = true)
-    void insertarReserva(@Param("horareserva") Date horareserva, @Param("cuenta") Cuenta cuenta);
+    @Query(value = "INSERT INTO reservas (horareserva, idcuenta, idreserva) VALUES (:horareserva, :idcuenta, parranderos_sequence.nextval)", nativeQuery = true)
+    void insertarReserva(@Param("horareserva") Date horareserva, @Param("idcuenta") Cuenta idcuenta);
 
 
     // Read
@@ -26,19 +26,18 @@ public interface ReservaRepo extends JpaRepository <Reserva, Integer> {
     Collection<Reserva> darReservas();
 
     @Query(value = "SELECT * FROM reservas WHERE idreserva = :idreserva", nativeQuery = true)
-    Reserva darReserva(@Param("idreserva") Integer idreserva);
+    Reserva darReserva(@Param("idreserva") int idreserva);
 
 
     // Update
     @Modifying
     @Transactional
-    @Query(value = "UPDATE reservas SET horareserva=:horareserva, cuenta=:cuenta WHERE idreserva=:idreserva", nativeQuery = true)
-    void actualizarReserva(@Param("idreserva") Integer idreserva, @Param("horareserva") Date horareserva, @Param("cuenta") Cuenta cuenta);
-
+    @Query(value = "UPDATE reservas SET horareserva=:horareserva, idcuenta=:idcuenta WHERE idreserva=:idreserva", nativeQuery = true)
+    void actualizarReserva(@Param("idreserva") int idreserva, @Param("horareserva") Date horareserva, @Param("idcuenta") Cuenta idcuenta);
 
     // Delete
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM reservas WHERE idreserva =: idreserva", nativeQuery = true)
-    void eliminarReserva(@Param("idreserva") Integer idreserva);
+    void eliminarReserva(@Param("idreserva") int idreserva);
 }

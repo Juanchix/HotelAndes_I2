@@ -15,7 +15,7 @@ public interface BarRepo extends JpaRepository <Bar, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO bares (idservicio, estilo) VALUES (parranderos_sequence.nextval, :estilo)", nativeQuery = true)
+    @Query(value = "INSERT INTO bares (estilo, idservicio) VALUES (:estilo, parranderos_sequence.nextval)", nativeQuery = true)
     void insertarBar(@Param("estilo") String estilo);
 
 
@@ -31,12 +31,12 @@ public interface BarRepo extends JpaRepository <Bar, Integer> {
     @Modifying
     @Transactional
     @Query(value = "UPDATE bares SET estilo=:estilo WHERE idservicio=:idservicio", nativeQuery = true)
-    void actualizarBar(@Param("idservicio") Integer idservicio, @Param("estilo") String estilo);
+    void actualizarBar(@Param("idservicio") int idservicio, @Param("estilo") String estilo);
 
 
     // Delete
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM bares WHERE idservicio =: idservicio", nativeQuery = true)
-    void eliminarBar(@Param("idservicio") Integer idservicio);
+    void eliminarBar(@Param("idservicio") int idservicio);
 }

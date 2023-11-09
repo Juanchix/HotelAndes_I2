@@ -15,7 +15,7 @@ public interface WifiRepo extends JpaRepository <Wifi, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO wifis (idservicio, anchobanda) VALUES (parranderos_sequence.nextval, :anchobanda)", nativeQuery = true)
+    @Query(value = "INSERT INTO wifis (anchobanda, idservicio) VALUES (:anchobanda, parranderos_sequence.nextval)", nativeQuery = true)
     void insertarWifi(@Param("anchobanda") Integer anchobanda);
 
 
@@ -30,13 +30,13 @@ public interface WifiRepo extends JpaRepository <Wifi, Integer> {
     // Update
     @Modifying
     @Transactional
-    @Query(value = "UPDATE wifis SET anchobanda=:anchobanda WHERE idservicio=:idservicio", nativeQuery = true)
-    void actualizarWifi(@Param("idservicio") Integer idservicio, @Param("anchobanda") Integer anchobanda);
+    @Query(value = "UPDATE wifis SET anchobanda = :anchobanda WHERE idservicio = :idservicio", nativeQuery = true)
+    void actualizarWifi(@Param("idservicio") int idservicio, @Param("anchobanda") Integer anchobanda);
 
 
     // Delete
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM wifis WHERE idservicio =: idservicio", nativeQuery = true)
-    void eliminarWifi(@Param("idservicio") Integer idservicio);
+    void eliminarWifi(@Param("idservicio") int idservicio);
 }

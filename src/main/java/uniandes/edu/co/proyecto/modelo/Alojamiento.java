@@ -24,20 +24,20 @@ public class Alojamiento {
     private Date checkin;
     private Date checkout;
     private Integer acompanantes;
-    //FK-
+    //FK
     @ManyToOne
-    @JoinColumn(name = "planes", referencedColumnName = "idplan")
-    private Plan plan;
+    @JoinColumn(name = "idplan", referencedColumnName = "idplan")
+    private Plan idplan;
 
 
     // Constructor
-    public Alojamiento(String activa, Date checkin, Date checkout, Integer acompanantes, Plan plan)
+    public Alojamiento(String activa, Date checkin, Date checkout, Integer acompanantes, Plan idplan)
     {
         this.activa = activa;
         this.checkin = checkin;
         this.checkout = checkout;
         this.acompanantes = acompanantes;
-        this.plan = plan;
+        this.idplan = idplan;
     }
 
 
@@ -65,8 +65,8 @@ public class Alojamiento {
         return acompanantes;
     }
 
-    public Plan getPlan() {
-        return plan;
+    public Plan getIdplan() {
+        return idplan;
     }
 
     // Setters
@@ -90,8 +90,8 @@ public class Alojamiento {
         this.acompanantes = acompanantes;
     }
 
-    public void setPlan(Plan plan) {
-        this.plan = plan;
+    public void setIdplan(Plan idplan) {
+        this.idplan = idplan;
     }
 
 }

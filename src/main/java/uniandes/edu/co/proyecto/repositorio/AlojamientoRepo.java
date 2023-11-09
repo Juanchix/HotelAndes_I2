@@ -17,9 +17,9 @@ public interface AlojamientoRepo extends JpaRepository <Alojamiento, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO alojamientos (idalojamiento, activa, checkin, checkout, acompanantes, plan) VALUES (parranderos_sequence.nextval, :activa, :checkin, :checkout, :acompanantes, :plan)", nativeQuery = true)
+    @Query(value = "INSERT INTO alojamientos (activa, checkin, checkout, acompanantes, idplan, idalojamiento) VALUES (:activa, :checkin, :checkout, :acompanantes, :idplan, parranderos_sequence.nextval)", nativeQuery = true)
     void insertarAlojamiento(@Param("activa") String activa, @Param("checkin") Date checkin, @Param("checkout") Date checkout, 
-                            @Param("acompanantes")Integer acompanantes, @Param("plan") Plan plan);
+                            @Param("acompanantes")Integer acompanantes, @Param("idplan") Plan idplan);
 
 
     // Read
@@ -33,9 +33,9 @@ public interface AlojamientoRepo extends JpaRepository <Alojamiento, Integer> {
     // Update
     @Modifying
     @Transactional
-    @Query(value = "UPDATE alojamientos SET activa=:activa, checkin=:checkin, checkout=:checkout, acompanantes=:acompanantes, plan=:plan WHERE idalojamiento=:idalojamiento", nativeQuery = true)
-    void actualizarAlojamiento(@Param("idalojamiento") int idalojamiento, @Param("activa") String activa, @Param("checkin") Date checkin, 
-                            @Param("checkout") Date checkout, @Param("acompanantes")Integer acompanantes, @Param("plan") Plan plan);
+    @Query(value = "UPDATE alojamientos SET activa=:activa, checkin=:checkin, checkout=:checkout, acompanantes=:acompanantes, idplan=:idplan WHERE idalojamiento=:idalojamiento", nativeQuery = true)
+    void actualizarAlojamiento(@Param("idalojamiento") int idalojamiento, @Param("activa") String activa, @Param("checkin") Date checkin, @Param("checkout") Date checkout, 
+                                @Param("acompanantes")Integer acompanantes, @Param("idplan") Plan idplan);
 
 
     // Delete

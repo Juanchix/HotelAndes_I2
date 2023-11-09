@@ -15,7 +15,7 @@ public interface SpaRepo extends JpaRepository <Spa, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO spas (idservicio, capacidad) VALUES (parranderos_sequence.nextval, :capacidad)", nativeQuery = true)
+    @Query(value = "INSERT INTO spas (capacidad, idservicio) VALUES (:capacidad, parranderos_sequence.nextval)", nativeQuery = true)
     void insertarSpa(@Param("capacidad") Integer capacidad);
 
 
@@ -31,12 +31,12 @@ public interface SpaRepo extends JpaRepository <Spa, Integer> {
     @Modifying
     @Transactional
     @Query(value = "UPDATE spas SET capacidad=:capacidad WHERE idservicio=:idservicio", nativeQuery = true)
-    void actualizarSpa(@Param("idservicio") Integer idservicio, @Param("capacidad") Integer capacidad);
+    void actualizarSpa(@Param("idservicio") int idservicio, @Param("capacidad") Integer capacidad);
 
 
     // Delete
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM spas WHERE idservicio =: idservicio", nativeQuery = true)
-    void eliminarSpa(@Param("idservicio") Integer idservicio);
+    void eliminarSpa(@Param("idservicio") int idservicio);
 }

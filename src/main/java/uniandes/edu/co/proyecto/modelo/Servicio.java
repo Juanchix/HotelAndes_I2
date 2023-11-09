@@ -22,26 +22,24 @@ public class Servicio {
 
     private Time horarioinicio;
     private Time horariofin;
-    private String nombre;
     private Integer costo;
     private String cargado;
     private String existe;
     //FK
     @ManyToOne
-    @JoinColumn(name="reservas", referencedColumnName = "idreserva")
-    private Reserva reserva;
+    @JoinColumn(name="idreserva", referencedColumnName = "idreserva")
+    private Reserva idreserva;
 
 
     // Constructor
-    public Servicio(Time horarioinicio, Time horariofin, String nombre, Integer costo, String cargado, String existe, Reserva reserva)
+    public Servicio(Time horarioinicio, Time horariofin, Integer costo, String cargado, String existe, Reserva idreserva)
     {
         this.horarioinicio = horarioinicio;
         this.horariofin = horariofin;
-        this.nombre = nombre;
         this.costo = costo;
         this.cargado = cargado;
         this.existe = existe;
-        this.reserva = reserva;
+        this.idreserva = idreserva;
     }
 
 
@@ -61,10 +59,6 @@ public class Servicio {
         return horariofin;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
     public Integer getCosto() {
         return costo;
     }
@@ -77,8 +71,8 @@ public class Servicio {
         return existe;
     }
 
-    public Reserva getReserva() {
-        return reserva;
+    public Reserva getIdreserva() {
+        return idreserva;
     }
 
 
@@ -95,10 +89,6 @@ public class Servicio {
         this.horariofin = horariofin;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public void setCosto(Integer costo) {
         this.costo = costo;
     }
@@ -111,8 +101,8 @@ public class Servicio {
         this.existe = existe;
     }
 
-    public void setReserva(Reserva reserva) {
-        this.reserva = reserva;
+    public void setIdreserva(Reserva idreserva) {
+        this.idreserva = idreserva;
     }
 
 }

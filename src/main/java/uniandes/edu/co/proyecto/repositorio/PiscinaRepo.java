@@ -15,7 +15,7 @@ public interface PiscinaRepo extends JpaRepository <Piscina, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO piscinas (idservicio, capacidad, profundidad) VALUES (parranderos_sequence.nextval, :capacidad, :profundidad)", nativeQuery = true)
+    @Query(value = "INSERT INTO piscinas (capacidad, profundidad, idservicio) VALUES (:capacidad, :profundidad, parranderos_sequence.nextval)", nativeQuery = true)
     void insertarPiscina(@Param("capacidad") Integer capacidad, @Param("profundidad") Float profundidad);
 
 
@@ -24,20 +24,19 @@ public interface PiscinaRepo extends JpaRepository <Piscina, Integer> {
     Collection<Piscina> darPiscinas();
 
     @Query(value = "SELECT * FROM piscinas WHERE idservicio = :idservicio", nativeQuery = true)
-    Piscina darPiscina(@Param("idservicio") Integer idservicio);
+    Piscina darPiscina(@Param("idservicio") int idservicio);
 
 
     // Update
     @Modifying
     @Transactional
     @Query(value = "UPDATE piscinas SET capacidad=:capacidad, profundidad=:profundidad WHERE idservicio=:idservicio", nativeQuery = true)
-    void actualizarPiscina(@Param("idservicio") Integer idservicio, @Param("capacidad") Integer capacidad,
-                               @Param("profundidad") Float profundidad);
+    void actualizarPiscina(@Param("idservicio") int idservicio, @Param("capacidad") Integer capacidad, @Param("profundidad") Float profundidad);
 
 
     // Delete
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM piscinas WHERE idservicio =: idservicio", nativeQuery = true)
-    void eliminarPiscina(@Param("idservicio") Integer idservicio);
+    void eliminarPiscina(@Param("idservicio") int idservicio);
 }

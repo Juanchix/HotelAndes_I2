@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table(name="internet")
+@Table(name="wifis")
 
 public class Wifi {
 

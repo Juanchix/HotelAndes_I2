@@ -18,30 +18,29 @@ public interface ProductoRepo extends JpaRepository <Producto, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO productos (idproducto, nombre, precio, bar, restaurante, tienda) VALUES (parranderos_sequence.nextval, :nombre, :precio, :bar, :restaurante, :tienda)", nativeQuery = true)
-    void insertarProducto(@Param("nombre") String nombre, @Param("precio") Integer precio, @Param("bar") Bar bar,
-                            @Param("restaurante") Restaurante restaurante, @Param("tienda") Tienda tienda);
-
+    @Query(value = "INSERT INTO productos (nombre, precio, idrestaurante,idbar,  idtienda, idproducto) VALUES (:nombre, :precio, :idrestaurante, :idbar, :idtienda, parranderos_sequence.nextval)", nativeQuery = true)
+    void insertarProducto(@Param("nombre") String nombre, @Param("precio") Integer precio, @Param("idrestaurante") Restaurante idrestaurante, @Param("idbar") Bar idbar, 
+                        @Param("idtienda") Tienda idtienda);
 
     // Read
     @Query(value = "SELECT * FROM prodcutos", nativeQuery = true)
     Collection<Producto> darProductos();
 
     @Query(value = "SELECT * FROM productos WHERE idproducto = :idproducto", nativeQuery = true)
-    Producto darProducto(@Param("idproducto") Integer idproducto);
+    Producto darProducto(@Param("idproducto") int idproducto);
 
 
     // Update
     @Modifying
     @Transactional
-    @Query(value = "UPDATE productos SET nombre=:nombre, precio=:precio, bar=:bar, restaurante=:restaurante, tienda=:tienda WHERE idproducto=:idproducto", nativeQuery = true)
-    void actualizarProducto(@Param("idproducto") Integer idproducto, @Param("nombre") String nombre, @Param("precio") Integer precio, @Param("bar") Bar bar,
-                            @Param("restaurante") Restaurante restaurante, @Param("tienda") Tienda tienda);
+    @Query(value = "UPDATE productos SET nombre=:nombre, precio=:precio, idrestaurante=:idrestaurante, idbar=:idbar, idtienda=:idtienda WHERE idproducto=:idproducto", nativeQuery = true)
+    void actualizarProducto(@Param("idproducto") int idproducto, @Param("nombre") String nombre, @Param("precio") Integer precio, @Param("restaurante") Restaurante idrestaurante,
+                            @Param("idbar") Bar idbar,@Param("tienda") Tienda idtienda);
 
 
     // Delete
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM productos WHERE idproducto =: idproducto", nativeQuery = true)
-    void eliminarProducto(@Param("idproducto") Integer idproducto);
+    void eliminarProducto(@Param("idproducto") int idproducto);
 }

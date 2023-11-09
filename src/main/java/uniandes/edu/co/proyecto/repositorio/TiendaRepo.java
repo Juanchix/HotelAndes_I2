@@ -16,7 +16,7 @@ public interface TiendaRepo extends JpaRepository <Tienda, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO tiendas (idservicio, tipo) VALUES (parranderos_sequence.nextval, :tipo)", nativeQuery = true)
+    @Query(value = "INSERT INTO tiendas (tipo, idservicio) VALUES (:tipo, parranderos_sequence.nextval)", nativeQuery = true)
     void insertarTienda(@Param("tipo") String tipo);
 
 
@@ -32,12 +32,12 @@ public interface TiendaRepo extends JpaRepository <Tienda, Integer> {
     @Modifying
     @Transactional
     @Query(value = "UPDATE tiendas SET tipo=:tipo WHERE idservicio=:idservicio", nativeQuery = true)
-    void actualizarTienda(@Param("idservicio") Integer idservicio, @Param("tipo") String tipo);
+    void actualizarTienda(@Param("idservicio") int idservicio, @Param("tipo") String tipo);
 
 
     // Delete
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM tiendas WHERE idservicio =: idservicio", nativeQuery = true)
-    void eliminarTienda(@Param("idservicio") Integer idservicio);
+    void eliminarTienda(@Param("idservicio") int idservicio);
 }

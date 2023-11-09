@@ -146,7 +146,7 @@ CREATE TABLE servicios (
     cargado            VARCHAR2(2) NOT NULL,
     existe             VARCHAR2(2) NOT NULL,
     idservicio         NUMBER NOT NULL,
-    idreserva NUMBER NOT NULL
+    idreserva          NUMBER NOT NULL
 );
 
 ALTER TABLE servicios
@@ -161,7 +161,7 @@ CREATE TABLE servispas (
     duracion    NUMBER NOT NULL,
     costo       NUMBER NOT NULL,
     fecha       DATE NOT NULL,
-    idservicio  NUMBER NOT NULL,
+    idspa       NUMBER NOT NULL,
     idservispas NUMBER NOT NULL
 );
 
@@ -306,7 +306,7 @@ ALTER TABLE servicios
             ON DELETE CASCADE;
 
 ALTER TABLE servispas
-    ADD CONSTRAINT servispas_spas_fk FOREIGN KEY ( idservicio )
+    ADD CONSTRAINT servispas_spas_fk FOREIGN KEY ( idspa )
         REFERENCES spas ( idservicio )
             ON DELETE CASCADE;
 

@@ -31,7 +31,7 @@ public class CuentasController {
 
     @PostMapping("/cuentas/new/save")
     public String cuentaGuardar(@ModelAttribute Cuenta cuenta){
-        cuentaRepo.insertarCuenta(cuenta.getNetocuenta(), cuenta.getAlojamiento());
+        cuentaRepo.insertarCuenta(cuenta.getNetocuenta(), cuenta.getIdalojamiento());
         return "redirect:/cuentas";
     }
 
@@ -48,7 +48,7 @@ public class CuentasController {
 
     @PostMapping("/cuentas/{id}/edit/save")
     public String cuentaEditarGuardar(@PathVariable("id") int id, @ModelAttribute Cuenta cuenta){
-        cuentaRepo.actualizarCuenta(id, cuenta.getNetocuenta(), cuenta.getAlojamiento());
+        cuentaRepo.actualizarCuenta(id, cuenta.getNetocuenta(), cuenta.getIdalojamiento());
         return "redirect:/cuentas";
     }
 

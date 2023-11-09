@@ -29,6 +29,7 @@ DELETE FROM cuentas;
 DELETE FROM gimnasios;
 DELETE FROM habitaciones;
 DELETE FROM hoteles;
+DELETE FROM lavados;
 DELETE FROM piscinas;
 DELETE FROM planes;    
 DELETE FROM productos;
@@ -42,3 +43,5 @@ DELETE FROM tipos;
 DELETE FROM usuarios;
 DELETE FROM utensilios;
 DELETE FROM wifi;
+
+COMMIT;

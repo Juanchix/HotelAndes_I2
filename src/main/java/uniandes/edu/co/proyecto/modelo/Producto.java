@@ -22,24 +22,24 @@ public class Producto {
     private Integer precio;
     //FK
     @ManyToOne
-    @JoinColumn(name="bar", referencedColumnName = "idservicio")
-    private Bar bar;
+    @JoinColumn(name="idbar", referencedColumnName = "idservicio")
+    private Bar idbar;
     @ManyToOne
-    @JoinColumn(name="restaurante", referencedColumnName = "idservicio")
-    private Restaurante restaurante;
+    @JoinColumn(name="idrestaurante", referencedColumnName = "idservicio")
+    private Restaurante idrestaurante;
     @ManyToOne
-    @JoinColumn(name="tienda", referencedColumnName = "idservicio")
-    private Tienda tienda;
+    @JoinColumn(name="idtienda", referencedColumnName = "idservicio")
+    private Tienda idtienda;
 
 
     // Constructor
-    public Producto(String nombre, Integer precio, Bar bar, Restaurante restaurante, Tienda tienda)
+    public Producto(String nombre, Integer precio, Bar idbar, Restaurante idrestaurante, Tienda idtienda)
     {
         this.nombre = nombre;
         this.precio = precio;
-        this.bar = bar;
-        this.restaurante = restaurante;
-        this.tienda = tienda;
+        this.idbar = idbar;
+        this.idrestaurante = idrestaurante;
+        this.idtienda = idtienda;
     }
 
 
@@ -59,16 +59,16 @@ public class Producto {
         return precio;
     }
 
-    public Bar getBar() {
-        return bar;
+    public Bar getIdbar() {
+        return idbar;
     }
 
-    public Restaurante getRestaurante() {
-        return restaurante;
+    public Restaurante getIdrestaurante() {
+        return idrestaurante;
     }
 
-    public Tienda getTienda() {
-        return tienda;
+    public Tienda getIdtienda() {
+        return idtienda;
     }
 
 
@@ -85,16 +85,16 @@ public class Producto {
         this.precio = precio;
     }
 
-    public void setBar(Bar bar) {
-        this.bar = bar;
+    public void setIdbar(Bar idbar) {
+        this.idbar = idbar;
     }
 
-    public void setRestaurante(Restaurante restaurante) {
-        this.restaurante = restaurante;
+    public void setIdrestaurante(Restaurante idrestaurante) {
+        this.idrestaurante = idrestaurante;
     }
 
-    public void setTienda(Tienda tienda) {
-        this.tienda = tienda;
+    public void setIdtienda(Tienda idtienda) {
+        this.idtienda = idtienda;
     }
 
 }

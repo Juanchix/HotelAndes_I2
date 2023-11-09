@@ -16,7 +16,7 @@ public interface TipoRepo extends JpaRepository <Tipo, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO tipos (idtipo, tipo, capacidad, dotacion) VALUES (parranderos_sequence.nextval, :tipo, :capacidad, :dotacion)", nativeQuery = true)
+    @Query(value = "INSERT INTO tipos (tipo, capacidad, dotacion, idtipo) VALUES (:tipo, :capacidad, :dotacion, parranderos_sequence.nextval)", nativeQuery = true)
     void insertarTipo(@Param("tipo") String tipo, @Param("capacidad") Integer capacidad, @Param("dotacion") String dotacion);
 
 
@@ -32,8 +32,7 @@ public interface TipoRepo extends JpaRepository <Tipo, Integer> {
     @Modifying
     @Transactional
     @Query(value = "UPDATE tipos SET tipo=:tipo, capacidad=:capacidad, dotacion=:dotacion WHERE idtipo=:idtipo", nativeQuery = true)
-    void actualizarTipo(@Param("idtipo") int idtipo, @Param("tipo") String tipo, @Param("capacidad") Integer capacidad,
-                         @Param("dotacion") String dotacion);
+    void actualizarTipo(@Param("idtipo") int idtipo, @Param("tipo") String tipo, @Param("capacidad") Integer capacidad, @Param("dotacion") String dotacion);
 
 
     // Delete

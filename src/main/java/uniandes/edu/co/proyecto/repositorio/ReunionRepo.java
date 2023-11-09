@@ -17,7 +17,7 @@ public interface ReunionRepo extends JpaRepository <Reunion, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO reuniones (idservicio, capacidad, costoadicional, fecha, hora, duracion) VALUES (parranderos_sequence.nextval, :capacidad, :costoadicional, :fecha, :hora, :duracion)", nativeQuery = true)
+    @Query(value = "INSERT INTO reuniones (capacidad, costoadicional, fecha, hora, duracion, idservicio) VALUES (:capacidad, :costoadicional, :fecha, :hora, :duracion, parranderos_sequence.nextval)", nativeQuery = true)
     void insertarReunion(@Param("capacidad") Integer capacidad, @Param("costoadicional") Integer costoadicional, @Param("fecha") Date fecha, 
                             @Param("hora") Time hora, @Param("duracion") Integer duracion);
 
@@ -27,14 +27,14 @@ public interface ReunionRepo extends JpaRepository <Reunion, Integer> {
     Collection<Reunion> darReuniones();
 
     @Query(value = "SELECT * FROM reuniones WHERE idservicio = :idservicio", nativeQuery = true)
-    Reunion darReunion(@Param("idservicio") Integer idservicio);
+    Reunion darReunion(@Param("idservicio") int idservicio);
 
 
     // Update
     @Modifying
     @Transactional
     @Query(value = "UPDATE reuniones SET capacidad=:capacidad, costoadicional=:costoadicional, fecha=:fecha, hora=:hora, duracion=:duracion WHERE idservicio=:idservicio", nativeQuery = true)
-    void actualizarReunion(@Param("idservicio") Integer idservicio, @Param("capacidad") Integer capacidad, @Param("costoadicional") Integer costoadicional, @Param("fecha") Date fecha, 
+    void actualizarReunion(@Param("idservicio") int idservicio, @Param("capacidad") Integer capacidad, @Param("costoadicional") Integer costoadicional, @Param("fecha") Date fecha, 
                             @Param("hora") Time hora, @Param("duracion") Integer duracion);
 
 
@@ -42,5 +42,5 @@ public interface ReunionRepo extends JpaRepository <Reunion, Integer> {
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM reuniones WHERE idservicio =: idservicio", nativeQuery = true)
-    void eliminarReunion(@Param("idservicio") Integer idservicio);
+    void eliminarReunion(@Param("idservicio") int idservicio);
 }

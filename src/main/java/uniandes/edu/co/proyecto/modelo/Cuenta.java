@@ -21,15 +21,15 @@ public class Cuenta {
     private Integer netocuenta;
     //FK
     @ManyToOne
-    @JoinColumn(name="alojamientos", referencedColumnName = "idalojamiento")
-    private Alojamiento alojamiento;
+    @JoinColumn(name="idalojamiento", referencedColumnName = "idalojamiento")
+    private Alojamiento idalojamiento;
 
 
     // Constructor
-    public Cuenta(Integer netocuenta, Alojamiento alojamiento)
+    public Cuenta(Integer netocuenta, Alojamiento idalojamiento)
     {
         this.netocuenta = netocuenta;
-        this.alojamiento = alojamiento;
+        this.idalojamiento = idalojamiento;
     }
 
 
@@ -45,8 +45,8 @@ public class Cuenta {
         return netocuenta;
     }
 
-    public Alojamiento getAlojamiento() {
-        return alojamiento;
+    public Alojamiento getIdalojamiento() {
+        return idalojamiento;
     }
 
 
@@ -59,8 +59,8 @@ public class Cuenta {
         this.netocuenta = netocuenta;
     }
 
-    public void setAlojamiento(Alojamiento alojamiento) {
-        this.alojamiento = alojamiento;
+    public void setIdalojamiento(Alojamiento idalojamiento) {
+        this.idalojamiento = idalojamiento;
     }
 
 }

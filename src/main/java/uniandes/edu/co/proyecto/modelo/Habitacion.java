@@ -23,25 +23,25 @@ public class Habitacion {
     private Integer precionoche;
     //FK
     @ManyToOne
-    @JoinColumn(name="hoteles", referencedColumnName = "idhotel")
-    private Hotel hotel;
+    @JoinColumn(name="idhotel", referencedColumnName = "idhotel")
+    private Hotel idhotel;
     @ManyToOne
-    @JoinColumn(name="tipos", referencedColumnName = "idtipo")
-    private Tipo tipo;
+    @JoinColumn(name="idtipo", referencedColumnName = "idtipo")
+    private Tipo idtipo;
     @ManyToOne
-    @JoinColumn(name = "alojamientos", referencedColumnName = "idalojamiento")
-    private Alojamiento alojamiento;
+    @JoinColumn(name="idalojamiento", referencedColumnName = "idalojamiento")
+    private Alojamiento idalojamiento;
 
 
     // Constructor
-    public Habitacion(Integer numhabitacion, String disponible, Integer precionoche, Hotel hotel, Tipo tipo, Alojamiento alojamiento)
+    public Habitacion(Integer numhabitacion, String disponible, Integer precionoche, Hotel idhotel, Tipo idtipo, Alojamiento idalojamiento)
     {
         this.numhabitacion = numhabitacion;
         this.disponible = disponible;
         this.precionoche = precionoche;
-        this.hotel = hotel;
-        this.tipo = tipo;
-        this.alojamiento = alojamiento;
+        this.idhotel = idhotel;
+        this.idtipo = idtipo;
+        this.idalojamiento = idalojamiento;
     }
 
 
@@ -65,16 +65,16 @@ public class Habitacion {
         return precionoche;
     }
 
-    public Hotel getHotel() {
-        return hotel;
+    public Hotel getIdhotel() {
+        return idhotel;
     }
 
-    public Tipo getTipo() {
-        return tipo;
+    public Tipo getIdtipo() {
+        return idtipo;
     }
 
-    public Alojamiento getAlojamiento() {
-        return alojamiento;
+    public Alojamiento getIdalojamiento() {
+        return idalojamiento;
     }
 
 
@@ -95,16 +95,16 @@ public class Habitacion {
         this.precionoche = precionoche;
     }
 
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
+    public void setIdhotel(Hotel idhotel) {
+        this.idhotel = idhotel;
     }
 
-    public void setTipo(Tipo tipo) {
-        this.tipo = tipo;
+    public void setIdtipo(Tipo idtipo) {
+        this.idtipo = idtipo;
     }
 
-    public void setAlojamiento(Alojamiento alojamiento) {
-        this.alojamiento = alojamiento;
+    public void setIdalojamiento(Alojamiento idalojamiento) {
+        this.idalojamiento = idalojamiento;
     }
 
 }

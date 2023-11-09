@@ -15,7 +15,7 @@ public interface UtensilioRepo extends JpaRepository <Utensilio, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO utensilios (idservicio, devuelto, estado) VALUES (parranderos_sequence.nextval, :devuelto, :estado)", nativeQuery = true)
+    @Query(value = "INSERT INTO utensilios (devuelto, estado, idservicio) VALUES (:devuelto, :estado, parranderos_sequence.nextval)", nativeQuery = true)
     void insertarUtensilio(@Param("devuelto") String devuelto, @Param("estado") String estado);
 
 
@@ -24,19 +24,18 @@ public interface UtensilioRepo extends JpaRepository <Utensilio, Integer> {
     Collection<Utensilio> darUtensilios();
 
     @Query(value = "SELECT * FROM utensilios WHERE idservicio = :idservicio", nativeQuery = true)
-    Utensilio darUtensilio(@Param("idservicio") Integer idservicio);
+    Utensilio darUtensilio(@Param("idservicio") int idservicio);
 
 
     // Update
     @Modifying
     @Transactional
     @Query(value = "UPDATE utensilios SET devuelto=:devuelto, estado=:estado WHERE idservicio=:idservicio", nativeQuery = true)
-    void actualizarUtensilio(@Param("idservicio") Integer idservicio, @Param("devuelto") String devuelto, @Param("estado") String estado);
-
+    void actualizarUtensilio( @Param("idservicio") int idservicio, @Param("devuelto") String devuelto, @Param("estado") String estado);
 
     // Delete
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM utensilios WHERE idservicio =: idservicio", nativeQuery = true)
-    void eliminarUtensilio(@Param("idservicio") Integer idservicio);
+    void eliminarUtensilio(@Param("idservicio") int idservicio);
 }

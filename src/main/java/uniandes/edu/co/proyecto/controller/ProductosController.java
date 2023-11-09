@@ -31,7 +31,7 @@ public class ProductosController {
 
     @PostMapping("/productos/new/save")
     public String productoGuardar(@ModelAttribute Producto producto){
-        productoRepo.insertarProducto(producto.getNombre(), producto.getPrecio(), producto.getBar(), producto.getRestaurante(), producto.getTienda());
+        productoRepo.insertarProducto(producto.getNombre(), producto.getPrecio(), producto.getIdrestaurante(), producto.getIdbar(), producto.getIdtienda());
         return "redirect:/productos";
     }
 
@@ -48,7 +48,7 @@ public class ProductosController {
 
     @PostMapping("/productos/{id}/edit/save")
     public String productoEditarGuardar(@PathVariable("id") int id, @ModelAttribute Producto producto){
-        productoRepo.actualizarProducto(id, producto.getNombre(), producto.getPrecio(), producto.getBar(), producto.getRestaurante(), producto.getTienda());
+        productoRepo.actualizarProducto(id, producto.getNombre(), producto.getPrecio(), producto.getIdrestaurante(), producto.getIdbar(), producto.getIdtienda());
         return "redirect:/productos";
     }
 

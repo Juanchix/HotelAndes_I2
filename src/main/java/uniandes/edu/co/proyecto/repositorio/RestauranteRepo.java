@@ -15,7 +15,7 @@ public interface RestauranteRepo extends JpaRepository <Restaurante, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO restaurantes (idservicio, estilo) VALUES (parranderos_sequence.nextval, :estilo)", nativeQuery = true)
+    @Query(value = "INSERT INTO restaurantes (estilo, idservicio) VALUES (:estilo, parranderos_sequence.nextval)", nativeQuery = true)
     void insertarRestaurante(@Param("estilo") String estilo);
 
 
@@ -31,12 +31,12 @@ public interface RestauranteRepo extends JpaRepository <Restaurante, Integer> {
     @Modifying
     @Transactional
     @Query(value = "UPDATE restaurantes SET estilo=:estilo WHERE idservicio=:idservicio", nativeQuery = true)
-    void actualizarRestaurante(@Param("idservicio") Integer idservicio, @Param("estilo") String estilo);
+    void actualizarRestaurante(@Param("idservicio") int idservicio, @Param("estilo") String estilo);
 
 
     // Delete
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM restaurantes WHERE idservicio =: idservicio", nativeQuery = true)
-    void eliminarRestaurante(@Param("idservicio") Integer idservicio);
+    void eliminarRestaurante(@Param("idservicio") int idservicio);
 }

@@ -31,7 +31,7 @@ public class ServispasController {
 
     @PostMapping("/servispas/new/save")
     public String servispaGuardar(@ModelAttribute Servispa servispa){
-        servispaRepo.insertarServispa(servispa.getDuracion(), servispa.getCosto(), servispa.getFecha(), servispa.getSpa());
+        servispaRepo.insertarServispa(servispa.getDuracion(), servispa.getCosto(), servispa.getFecha(), servispa.getIdpa());
         return "redirect:/servispas";
     }
 
@@ -48,7 +48,7 @@ public class ServispasController {
 
     @PostMapping("/servispas/{id}/edit/save")
     public String servispaEditarGuardar(@PathVariable("id") int id, @ModelAttribute Servispa servispa){
-        servispaRepo.actualizarServispa(id, servispa.getDuracion(), servispa.getCosto(), servispa.getFecha(), servispa.getSpa());
+        servispaRepo.actualizarServispa(id, servispa.getDuracion(), servispa.getCosto(), servispa.getFecha(), servispa.getIdpa());
         return "redirect:/servispas";
     }
 
