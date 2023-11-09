@@ -2,6 +2,7 @@ package uniandes.edu.co.proyecto.repositorio;
 
 import java.sql.Date;
 import java.util.Collection;
+import java.util.Map;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -43,6 +44,28 @@ public interface AlojamientoRepo extends JpaRepository <Alojamiento, Integer> {
     @Transactional
     @Query(value = "DELETE FROM alojamientos WHERE idalojamiento =: idalojamiento", nativeQuery = true)
     void eliminarAlojamiento(@Param("idalojamiento") int idalojamiento);
+
+    //REQ6
+    @Query(value = "WITH Ocupacion AS ( " +
+    "SELECT a.checkin, COUNT(*) AS habitaciones_ocupadas " +
+    "FROM alojamientos a " +
+    "JOIN habitaciones h ON a.idalojamiento = h.idalojamiento " +
+    "WHERE a.activa = 'SI' " +
+    "GROUP BY a.checkin " +
+    "), " +
+    "Ingresos AS ( " +
+    "SELECT a.checkin, SUM(c.netocuenta) AS ingresos_totales " +
+    "FROM alojamientos a " +
+    "JOIN cuentas c ON a.idalojamiento = c.idalojamiento " +
+    "WHERE a.activa = 'SI' " +
+    "GROUP BY a.checkin " +
+    ") " +
+    "SELECT " +
+    "(SELECT checkin FROM Ocupacion ORDER BY habitaciones_ocupadas DESC FETCH FIRST ROW ONLY) AS dia_mayor_ocupacion, " +
+    "(SELECT checkin FROM Ingresos ORDER BY ingresos_totales DESC FETCH FIRST ROW ONLY) AS dia_mayores_ingresos, " +
+    "(SELECT checkin FROM Ocupacion ORDER BY habitaciones_ocupadas ASC FETCH FIRST ROW ONLY) AS dia_menor_demanda " +
+    "FROM dual", nativeQuery = true)
+Map<String, Date> findHotelOperationAnalysis();
 
 }
 

@@ -1,8 +1,11 @@
 package uniandes.edu.co.proyecto.repositorio;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -65,5 +68,15 @@ List<Object[]> calcularDineroRecolectadoPorHabitacionEnElUltimoAnio(
 @Param("startDate") Date startDate,
 @Param("endDate") Date endDate
 );
+
+    // REQ3
+    @Query(value = "SELECT new map(h.numhabitacion as numhabitacion, " + 
+    "SUM(a.checkout - a.checkin) as dias_ocupados, " +
+    "(SUM(a.checkout - a.checkin) / 365) * 100 as indice_ocupacion) " +
+    "FROM Habitaciones h " +
+    "JOIN h.alojamientos a " +
+    "WHERE a.checkin BETWEEN ADD_MONTHS(SYSDATE, -12) AND SYSDATE " +
+    "GROUP BY h.numhabitacion")
+Collection<Map<String, Object>> calcularIndiceOcupacion();
 
 }

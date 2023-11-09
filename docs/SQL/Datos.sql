@@ -401,6 +401,7 @@ INSERT INTO alojamientos (activa, checkin, checkout, acompanantes, idplan, idalo
 INSERT INTO alojamientos (activa, checkin, checkout, acompanantes, idplan, idalojamiento) VALUES ('SI', TO_DATE('2015-01-15', 'YYYY-MM-DD'), TO_DATE('2015-01-22', 'YYYY-MM-DD'), 198, 198, 198);
 INSERT INTO alojamientos (activa, checkin, checkout, acompanantes, idplan, idalojamiento) VALUES ('SI', TO_DATE('2015-02-18', 'YYYY-MM-DD'), TO_DATE('2015-02-25', 'YYYY-MM-DD'), 199, 199, 199);
 INSERT INTO alojamientos (activa, checkin, checkout, acompanantes, idplan, idalojamiento) VALUES ('SI', TO_DATE('2015-03-10', 'YYYY-MM-DD'), TO_DATE('2015-03-17', 'YYYY-MM-DD'), 200, 200, 200);
+INSERT INTO alojamientos (activa, checkin, checkout, acompanantes, idplan, idalojamiento) VALUES ('SI', TO_DATE('2015-04-05', 'YYYY-MM-DD'), TO_DATE('2015-04-12', 'YYYY-MM-DD'), 201, 201, 201);
 
 -- Insertando datos en la tabla 'usuarios'
 INSERT INTO usuarios (nombreuser, tipodocuser, numdocuser, correouser, iduser, idalojamiento) VALUES ('Ana Ramirez', 'CC', 1012345678, 'ana.ramirez@email.com', 1, 1);
@@ -691,6 +692,7 @@ INSERT INTO cuentas (netocuenta, idcuenta, idalojamiento) VALUES (49000, 197, 19
 INSERT INTO cuentas (netocuenta, idcuenta, idalojamiento) VALUES (720000, 198, 198);
 INSERT INTO cuentas (netocuenta, idcuenta, idalojamiento) VALUES (810000, 199, 199);
 INSERT INTO cuentas (netocuenta, idcuenta, idalojamiento) VALUES (940000, 200, 200);
+INSERT INTO cuentas (netocuenta, idcuenta, idalojamiento) VALUES (500000, 201, 201);
 
 -- Insertando datos en la tabla 'reservas'
 INSERT INTO reservas (horareserva, idreserva, idcuenta) VALUES (TO_DATE('2023-11-05 19:00:00', 'YYYY-MM-DD HH24:MI:SS'), 1, 1);
@@ -893,6 +895,7 @@ INSERT INTO reservas (horareserva, idreserva, idcuenta) VALUES (TO_DATE('2024-05
 INSERT INTO reservas (horareserva, idreserva, idcuenta) VALUES (TO_DATE('2024-05-20 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), 198, 198);
 INSERT INTO reservas (horareserva, idreserva, idcuenta) VALUES (TO_DATE('2024-05-21 20:00:00', 'YYYY-MM-DD HH24:MI:SS'), 199, 199);
 INSERT INTO reservas (horareserva, idreserva, idcuenta) VALUES (TO_DATE('2024-05-22 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), 200, 200);
+INSERT INTO reservas (horareserva, idreserva, idcuenta) VALUES (TO_DATE('2024-05-23 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), 201, 201);
 
 -- Insertando datos en la tabla 'servicios'
 INSERT INTO servicios (horarioinicial, horariofinal, costo, cargado, existe, idservicio, idreserva) VALUES (TO_DATE('07:00', 'HH24:MI'), TO_DATE('23:00', 'HH24:MI'), 100000, 'NO', 'SI', 1, 1);
@@ -1095,6 +1098,7 @@ INSERT INTO servicios (horarioinicial, horariofinal, costo, cargado, existe, ids
 INSERT INTO servicios (horarioinicial, horariofinal, costo, cargado, existe, idservicio, idreserva) VALUES (TO_DATE('19:00', 'HH24:MI'), TO_DATE('23:30', 'HH24:MI'), 81000, 'NO', 'SI', 198, 198);
 INSERT INTO servicios (horarioinicial, horariofinal, costo, cargado, existe, idservicio, idreserva) VALUES (TO_DATE('09:30', 'HH24:MI'), TO_DATE('17:00', 'HH24:MI'), 94000, 'SI', 'SI', 199, 199);
 INSERT INTO servicios (horarioinicial, horariofinal, costo, cargado, existe, idservicio, idreserva) VALUES (TO_DATE('08:00', 'HH24:MI'), TO_DATE('20:00', 'HH24:MI'), 50000, 'NO', 'SI', 200, 200);
+INSERT INTO servicios (horarioinicial, horariofinal, costo, cargado, existe, idservicio, idreserva) VALUES (TO_DATE('06:00', 'HH24:MI'), TO_DATE('22:00', 'HH24:MI'), 60000, 'SI', 'SI', 201, 201);
 
 
 -- Insertando datos en la tabla 'bares'
@@ -1316,6 +1320,9 @@ INSERT INTO wifi (anchobanda, idservicio) VALUES (800.0, 197);
 INSERT INTO wifi (anchobanda, idservicio) VALUES (850.0, 198);
 INSERT INTO wifi (anchobanda, idservicio) VALUES (900.0, 199);
 INSERT INTO wifi (anchobanda, idservicio) VALUES (950.0, 200);
+
+-- Insertando datos en la tabla 'lavados'
+INSERT INTO lavados(prendas, tipo, zapatos, idservicio) VALUES (10, 'Camisas', 3, 201);
 
 -- Insertando datos en la tabla 'servispas'
 INSERT INTO servispas (duracion, costo, fecha, idservicio, idservispas) VALUES (60, 100.00, TO_DATE('2023-11-20', 'YYYY-MM-DD'), 121, 1);
