@@ -19,7 +19,7 @@ public interface ConferenciaRepo extends JpaRepository <Conferencia, Integer> {
     // Creation
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO conferencias (capacidad, fecha, hora, duracion, idservicio, idconferencia) VALUES (:capacidad, :fecha, :hora, :duracion, idservicio, parranderos_sequence.nextval)", nativeQuery = true)
+    @Query(value = "INSERT INTO conferencias (capacidad, fecha, hora, duracion, idservicio, idconferencia) VALUES (:capacidad, :fecha, :hora, :duracion, :idservicio, parranderos_sequence.nextval)", nativeQuery = true)
     void insertarConferencia(@Param("capacidad") Integer capacidad, @Param("fecha") Date fecha, @Param("hora") Time hora,
                             @Param("duracion") Integer duracion, @Param("idservicio") Servicio idservicio);
 

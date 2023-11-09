@@ -54,7 +54,7 @@ public interface HabitacionRepo extends JpaRepository <Habitacion, Integer> {
       "JOIN reservas r ON c.idcuenta = r.cuenta " +
       "JOIN servicios s ON r.idreserva = s.reserva " +
       "WHERE s.horarioinicial >= :startDate " +
-      "AND s.horariofinalal <= :endDate " +
+      "AND s.horariofinal <= :endDate " +
       "AND s.existe = 'SI' " +
       "GROUP BY h.numhabitacion", nativeQuery = true)
 List<Object[]> calcularDineroRecolectadoPorHabitacionEnElUltimoAnio(
