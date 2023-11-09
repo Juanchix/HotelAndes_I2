@@ -20,7 +20,7 @@ public class Usuario {
 
     private String nombreuser;
     private String tipodocuser;
-    private Integer numdocuser;
+    private Long numdocuser;
     private String correouser;
     //FK
     @ManyToOne
@@ -29,7 +29,7 @@ public class Usuario {
 
 
     // Constructor
-    public Usuario(String nombreuser, String tipodocuser, Integer numdocuser, String correouser, Alojamiento idalojamiento)
+    public Usuario(String nombreuser, String tipodocuser, Long numdocuser, String correouser, Alojamiento idalojamiento)
     {
         this.nombreuser = nombreuser;
         this.tipodocuser = tipodocuser;
@@ -55,7 +55,7 @@ public class Usuario {
         return tipodocuser;
     }
 
-    public Integer getNumdocuser() {
+    public Long getNumdocuser() {
         return numdocuser;
     }
 
@@ -82,7 +82,7 @@ public class Usuario {
         this.tipodocuser = tipodocuser;
     }
 
-    public void setNumdocuser(Integer numdocuser) {
+    public void setNumdocuser(Long numdocuser) {
         this.numdocuser = numdocuser;
     }
 
